@@ -12,7 +12,6 @@ const db = new Client({
      rejectUnauthorized: false
     }
 });
-
 db.connect();
 
 app.use(cors());
@@ -21,9 +20,6 @@ app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 // Allows for using information coming from forms
 app.use(express.urlencoded({ extended: true }));
-
-// app.use('/css', express.static(__dirname + 'public/CSS'));
-// app.use('/js', express.static(__dirname + 'public/js'));
 
 // Adding new directions due to React implementation
 app.use('/css', express.static(__dirname + 'src'));
