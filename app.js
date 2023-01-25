@@ -1,11 +1,10 @@
-// Importing the framework
 const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
-    // PostgreSQL
-const {Client} = require('pg');
+
+const {Client} = require('pg'); // PostgreSQL
 
 const db = new Client({
     host: "localhost",
@@ -18,20 +17,22 @@ const db = new Client({
 // const db = new Client({
 //     connectionString: process.env.DATABASE_URL,
 //     ssl: {
-//     rejectUnauthorized: false
+//      rejectUnauthorized: false
 //     }
 // });
+
 db.connect();
 
 app.use(cors());
 app.use(express.static('public'));
-    // Recognize Request Objects as JSON objects
+// Recognizes Request Objects as JSON objects
 app.use(express.json({ limit: '1mb' }));
-    // Allows use information coming from forms
+// Allows for using information coming from forms
 app.use(express.urlencoded({ extended: true }));
 
 // app.use('/css', express.static(__dirname + 'public/CSS'));
 // app.use('/js', express.static(__dirname + 'public/js'));
+
 // Adding new directions due to React implementation
 app.use('/css', express.static(__dirname + 'src'));
 app.use('/js', express.static(__dirname + 'src'));
@@ -43,13 +44,9 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 
-    // Renders the page
+// Renders the page
 app.get('/', (req, res) => {
         res.render('schedule');
-});
-//  For testing purposes
-app.get('/test', (req, res) => {
-        res.json({'foo':'hey'});
 });
 
 app.get('/getting', (req, res) => {
@@ -66,11 +63,7 @@ app.get('/getting', (req, res) => {
 });
 
 app.post('/posting', (req, res, next) => {
-    
-    
-        console.log('post');
-
-        // Inserting into a database
+    // Inserting into a database
     const sql = 'INSERT INTO visits (name, surname, phone_number, SSN, day, time) VALUES ($1, $2, $3, $4, $5, $6)';
     db.query(sql, [
         req.body[0],
@@ -90,7 +83,7 @@ app.post('/posting', (req, res, next) => {
 });
 
 app.put('/change', (req, res, next) => {
-        // Updating a database
+    // Updating a database
     const sql = 'UPDATE visits SET name = $1, surname = $2, phone_number = $3, SSN = $4 WHERE day = $5 AND time = $6';
     db.query(sql, [
         req.body[0],
@@ -110,7 +103,7 @@ app.put('/change', (req, res, next) => {
 });
 
 app.delete('/day/:day/time/:time', (req, res) => {
-        // Deleting data inside of the database
+    // Deleting data inside of the database
     const sql = 'DELETE FROM visits WHERE day = $1 AND time = $2';
     db.query(sql, [
         req.params.day,
@@ -126,7 +119,6 @@ app.delete('/day/:day/time/:time', (req, res) => {
 });
 
 const PORT = process.env.PORT || 4002;
-// const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

@@ -4,15 +4,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-#root {
-    /* position: fixed;
-    z-index: 1111;
-    width: 200px;
-    color: red; */
-}
-
-
-
 body {
     color: black;
     font-family:  'Roboto', 'Arial', sans-serif;
@@ -33,7 +24,7 @@ body {
 #wallpaper {
     position: fixed;
     z-index: 0;
-    /* z-index: -1; in not-React version there was -1 z-index */
+    /* z-index: 0; in not-React version there was -1 z-index */
     width: 100%;
     height: 100%;
 }
@@ -102,7 +93,7 @@ body {
     margin-top: -3px;
 }
 
-    /* Pop window below */
+    /* ===== Pop window below ===== */
 /* The close button inspired with YouTube video */
 #close {
     cursor: pointer;
