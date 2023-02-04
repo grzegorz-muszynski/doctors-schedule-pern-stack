@@ -6,8 +6,10 @@ export function FirstRowCreator (props) {
     const [weekDates, setWeekDates] = useState(); // In the end it will be filled with a current batch of dates
 
     useEffect(() => {
-        let lastMonday = new Date(props.lastMon);   
+        let lastMonday = props.lastMon;
         let weekDaysElements = []; // Collects jsx/html elements for rendering  
+        
+        if (!lastMonday) return; // without this, .getDate method below will be used on undefined variable (during first effect invoking) making an error
 
         for (let i = 0; i < 6; i++) {   
             let anotherDate = new Date(lastMonday); // By default, assigns current date and time. The value will be changed in the next line
@@ -21,8 +23,8 @@ export function FirstRowCreator (props) {
 
     return (
         <tr>
-        <th scope="col" className="days firstColumn">Hours</th>
-        {weekDates}
+            <th scope="col" className="days firstColumn">Hours</th>
+            {weekDates}
         </tr>
     )
 }

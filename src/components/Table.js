@@ -17,20 +17,16 @@ export const Table = () => {
     // The effect below finds the last monday's date for a current week
     useEffect(() => {
         const date = new Date(); // Getting today's date
-        // Getting days difference between today and the last monday
-        const daysDifference = date.getDay() - 1;
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
+        const mondayDate = new Date();
+        const daysDifference = date.getDay() - 1; // Getting days difference between today and the last monday
+        mondayDate.setDate(date.getDate() - daysDifference); // Setting monday's date
 
-        let lastMondayDay = day - daysDifference;
-        let lastMondayString = `${year}, ${month}, ${lastMondayDay}`;
-
-        setCurrentWeekMonday(lastMondayString);
+        setCurrentWeekMonday(mondayDate);
     }, []); // While first rendering, there is set a last monday counting from a day we are opening the program
 
     // Event handlers changing monday dates for a next week... 
     function rightArrowHandler() {
+        // let nextWeekMonday = currentWeekMonday;
         let nextWeekMonday = new Date(currentWeekMonday);
         nextWeekMonday.setDate(nextWeekMonday.getDate() + 7);
         setCurrentWeekMonday(nextWeekMonday);
@@ -48,20 +44,20 @@ export const Table = () => {
 
         // If the slot is booked, we get patient's data and will pass it as props to PopUpForm in purpose of displaying it in inputs
         if (e.target.dataset.patient) {
-        newPatientData = e.target.dataset.patient.split(",");
-        newPatientData = {
-            name: newPatientData[0],
-            surname: newPatientData[1],
-            phone: newPatientData[2],
-            ssn: newPatientData[3],
-        }
+            newPatientData = e.target.dataset.patient.split(",");
+            newPatientData = {
+                name: newPatientData[0],
+                surname: newPatientData[1],
+                phone: newPatientData[2],
+                ssn: newPatientData[3],
+            }
         } else {
-        newPatientData = {
-            name: '',
-            surname: '',
-            phone: '',
-            ssn: '',
-        }
+            newPatientData = {
+                name: '',
+                surname: '',
+                phone: '',
+                ssn: '',
+            }
         }
         setPatientData(newPatientData);
 

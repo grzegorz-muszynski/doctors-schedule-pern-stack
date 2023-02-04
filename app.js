@@ -6,12 +6,20 @@ const cors = require('cors');
 
 const {Client} = require('pg'); // PostgreSQL
 
+// const db = new Client({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//      rejectUnauthorized: false
+//     }
+// });
 const db = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-     rejectUnauthorized: false
-    }
+    host: "localhost",
+    user: "postgres",
+    port: 5432,
+    database: "postgres",
+    password: "elephant46"
 });
+
 db.connect();
 
 app.use(cors());
