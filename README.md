@@ -1,5 +1,5 @@
 ## Doctor's schedule with PERN stack
-Continuation of my CS50 final project. Main difference is completely different front-end part basing on React.js instead of vanilla JavaScript. Thinking about Heroku, PostgreSQL replaced SQLite. The application will be constantly enriched with new features.
+Continuation of my Doctor's Schedule project. Main difference is completely different front-end part basing on React.js instead of vanilla JavaScript. Thinking about Heroku, PostgreSQL replaced SQLite. The application will be constantly enriched with new features.
 ### Running app
 If you want to run an app locally, crucial things are having PostgreSQL managing tool and replacing a part of code in app.js:
 ```
@@ -20,4 +20,4 @@ Instead of the code above, there should be code below, filled with proper data:
       password: "xxx"
   });
 ```
-When it's done, type in a terminal ``` node app.js ``` running a backend part. Then, in a second terminal type ```npm start``` and wait until the program will open page in your brower.
+When it's done, type in a terminal ``` node app.js ``` running a backend part. Then, in a second terminal type ```npm start``` and wait until the program will open page in your browser.
