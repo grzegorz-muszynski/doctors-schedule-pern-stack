@@ -6,7 +6,6 @@ import { PopUpForm } from './PopUpForm';
 
 const API_ENDPOINT = "http://127.0.0.1:4002/"
 
-
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
     let [coordinates, setCoordinates] = useState({});
