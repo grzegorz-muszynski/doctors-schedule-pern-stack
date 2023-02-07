@@ -1,1 +1,0 @@
-web: sh -c 'node app.js && npm start'
