@@ -1,1 +1,1 @@
-web: sh -c 'node app.js && npm start"
+web: sh -c 'node app.js && npm start'
