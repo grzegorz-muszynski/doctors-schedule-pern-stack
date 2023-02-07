@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const PORT = process.env.PORT || 4002;
+
 const {Client} = require('pg'); // PostgreSQL
 
 const db = new Client({
@@ -106,8 +108,6 @@ app.delete('/day/:day/time/:time', (req, res) => {
         }
     });
 });
-
-const PORT = process.env.PORT || 4002;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
