@@ -4,7 +4,7 @@ import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
-const API_ENDPOINT = "https://doctors-schedule-pern-stack.herokuapp.com/"
+const API_ENDPOINT = "https://doctors-schedule-pern-stack.herokuapp.com/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');

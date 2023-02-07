@@ -9,7 +9,7 @@ const {Client} = require('pg'); // PostgreSQL
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
-        rejectUnauthorized: false
+    rejectUnauthorized: false
     }
 });
 
