@@ -6,21 +6,34 @@ const cors = require('cors');
 
 const PORT = process.env.PORT || 4002;
 
-const {Client} = require('pg'); // PostgreSQL
-
-const db = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});  
-
-db.connect();
-
+// Middleware
 app.use(cors());
 app.use(express.static('public'));
 // Recognizes Request Objects as JSON objects
 app.use(express.json({ limit: '1mb' }));
+
+// ======================= Replacing old connection
+const Pool = require("pg").Pool;
+require("dotenv").config();
+
+const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
+
+const proConfig = process.env.DATABASE_URL; // heroku addons
+
+const db = new Pool({
+  connectionString:
+    process.env.NODE_ENV === "production" ? proConfig : devConfig,
+});
+    // BELOW code from index.js ABOVE from db.js
+if (process.env.NODE_ENV === "production") {
+    // service static content
+    // npm run build
+    app.use(express.static(path.join(__dirname, "client/build")));
+  }
+//===================================
+// db.connect();
+
+
 // Allows for using information coming from forms
 app.use(express.urlencoded({ extended: true }));
 
