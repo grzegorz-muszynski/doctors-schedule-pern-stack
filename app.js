@@ -13,7 +13,7 @@ const db = new Client({
     ssl: {
     rejectUnauthorized: false
     }
-});
+}); 
 
 db.connect();
 
