@@ -6,14 +6,14 @@ const cors = require('cors');
 
 const PORT = process.env.PORT || 4002;
 
-// const {Client} = require('pg'); // PostgreSQL
+const {Client} = require('pg'); // PostgreSQL
 
-// const db = new Client({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//     rejectUnauthorized: false
-//     }
-// });
+const db = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+    rejectUnauthorized: false
+    }
+}); 
 
 db.connect();
 
