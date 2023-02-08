@@ -5,13 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const PORT = process.env.PORT || 4002;
-const express = require('express');
-const app = express();
-
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-const PORT = process.env.PORT || 4002;
 
 const {Client} = require('pg'); // PostgreSQL
 
