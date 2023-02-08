@@ -16,10 +16,10 @@ const db = new Client({
 });
 
 db.connect();
-
+// Middleware
 app.use(cors());
-app.use(express.static('public'));
-// Recognizes Request Objects as JSON objects
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "client/build")));// Recognizes Request Objects as JSON objects
 app.use(express.json({ limit: '1mb' }));
 
 
