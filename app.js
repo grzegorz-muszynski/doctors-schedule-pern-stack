@@ -15,7 +15,6 @@ const db = new Client({
     }
 });  
 
-
 db.connect();
 
 app.use(cors());
