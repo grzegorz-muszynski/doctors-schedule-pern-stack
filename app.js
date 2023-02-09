@@ -30,14 +30,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
-// Adding new directions due to React implementation
-// app.use('/css', express.static(__dirname + 'src'));
-// app.use('/js', express.static(__dirname + 'src'));
-
-// app.use('/img', express.static(__dirname + 'public/images'));
-
-// app.set('views', './views');
-// app.set('view engine', 'ejs'); 
 
 // In CLI created the table: CREATE TABLE visits (id INTEGER PRIMARY KEY, name TEXT NOT NULL, surname TEXT NOT NULL, phone_number INTEGER NOT NULL, SSN TEXT NOT NULL, day TEXT NOT NULL DEFAULT '', time TEXT NOT NULL DEFAULT '');
 
