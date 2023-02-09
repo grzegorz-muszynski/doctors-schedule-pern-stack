@@ -37,7 +37,9 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // app.use('/img', express.static(__dirname + 'public/images'));
 
 // app.set('views', './views');
-// app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs'); 
+
+// In CLI created the table: CREATE TABLE visits (id INTEGER PRIMARY KEY, name TEXT NOT NULL, surname TEXT NOT NULL, phone_number INTEGER NOT NULL, SSN TEXT NOT NULL, day TEXT NOT NULL DEFAULT '', time TEXT NOT NULL DEFAULT '');
 
 // Routes
 
