@@ -23,8 +23,9 @@ const db = new Client({
 db.connect();
 
 // app.use(express.static('public'));
-//app.use(express.static(path.join(__dirname, "client/build")));// Recognizes Request Objects as JSON objects
-app.use(express.static(path.join("client/build")));// Recognizes Request Objects as JSON objects
+//app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join("client/build")));
+app.use(express.static("client/build")); // Recognizes Request Objects as JSON objects
 
 // Allows for using information coming from forms
 app.use(express.urlencoded({ extended: true }));
@@ -34,7 +35,7 @@ app.use('/css', express.static(__dirname + 'src'));
 app.use('/js', express.static(__dirname + 'src'));
 
 app.use('/img', express.static(__dirname + 'public/images'));
-console.log(__dirname);
+
 // app.set('views', './views');
 // app.set('view engine', 'ejs');
 
