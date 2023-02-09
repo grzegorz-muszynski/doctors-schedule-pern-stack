@@ -31,10 +31,10 @@ app.use(express.static("client/build")); // The crucial line for connecting fron
 app.use(express.urlencoded({ extended: true }));
 
 // Adding new directions due to React implementation
-app.use('/css', express.static(__dirname + 'src'));
-app.use('/js', express.static(__dirname + 'src'));
+// app.use('/css', express.static(__dirname + 'src'));
+// app.use('/js', express.static(__dirname + 'src'));
 
-app.use('/img', express.static(__dirname + 'public/images'));
+// app.use('/img', express.static(__dirname + 'public/images'));
 
 // app.set('views', './views');
 // app.set('view engine', 'ejs');
@@ -72,7 +72,7 @@ app.post('/posting', (req, res, next) => {
     ], function(err) {
         if (err) {
             console.log(err);
-            return res.sendStatus("doesnt work, sorry...", 500);
+            return res.sendStatus("doesn't work, sorry...", 500); // Edit here==========
         } else {
             return res.sendStatus(201);
         }
