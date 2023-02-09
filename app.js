@@ -1,25 +1,26 @@
 const express = require('express');
 const app = express();
 const path = require("path"); // Crucial for app.use
-
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const {Client} = require('pg'); // PostgreSQL
 
 const PORT = process.env.PORT || 4002;
-
-const {Client} = require('pg'); // PostgreSQL
 
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 
+// Allows for using information coming from forms
+app.use(express.urlencoded({ extended: true }));
+
+// Database
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
 });
-
 db.connect();
 
 // app.use(express.static('public'));
@@ -27,8 +28,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
-// Allows for using information coming from forms
-app.use(express.urlencoded({ extended: true }));
+
 
 // Adding new directions due to React implementation
 // app.use('/css', express.static(__dirname + 'src'));
@@ -39,11 +39,11 @@ app.use(express.urlencoded({ extended: true }));
 // app.set('views', './views');
 // app.set('view engine', 'ejs');
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // Routes
 
-// Renders the page
+// Renders the page - seems unuseful===============================
 app.get('/', (req, res) => {
         res.render('schedule');
 });
