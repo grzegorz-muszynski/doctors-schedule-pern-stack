@@ -36,8 +36,8 @@ db.connect();
 
 // Renders the page - seems unuseful=====================================
 app.get('/', (req, res) => {
-        res.render('schedule');
-        // res.sendStatus(201);
+      //  res.render('schedule'); // When is only this line - table is created
+        // res.sendStatus(201); // When is only this line - table is NOT created
 });
 
 app.get('/getting', (req, res) => {
