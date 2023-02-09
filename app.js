@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const path = require("path"); // Crucial for app.use
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const {Client} = require('pg'); // PostgreSQL
 
 const PORT = process.env.PORT || 4002;
@@ -24,6 +24,7 @@ const db = new Client({
 });
 db.connect();
 
+app.use(bodyParser.json());
 // app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
@@ -37,8 +38,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 // app.set('views', './views');
 // app.set('view engine', 'ejs');
-
-// app.use(bodyParser.json());
 
 // Routes
 
