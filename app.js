@@ -25,7 +25,7 @@ db.connect();
 // app.use(express.static('public'));
 //app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
-app.use(express.static("client/build")); // Recognizes Request Objects as JSON objects
+app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
 // Allows for using information coming from forms
 app.use(express.urlencoded({ extended: true }));
@@ -72,7 +72,7 @@ app.post('/posting', (req, res, next) => {
     ], function(err) {
         if (err) {
             console.log(err);
-            return res.sendStatus('doesnt work, sorry...", 500);
+            return res.sendStatus("doesnt work, sorry...", 500);
         } else {
             return res.sendStatus(201);
         }
