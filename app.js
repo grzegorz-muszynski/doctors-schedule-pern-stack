@@ -41,9 +41,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
+// ROUTES
+
 // Renders the page
 app.get('/', (req, res) => {
-    res.render('schedule');
+    res.render('schedule', console.log('hey'));
 });
 
 app.get('/getting', (req, res) => {
