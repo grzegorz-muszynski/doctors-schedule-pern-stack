@@ -37,7 +37,7 @@ db.connect();
 // Renders the page - seems unuseful=====================================
 app.get('/', (req, res) => {
         // res.render('schedule');
-        // res.sendStatus(201);
+        res.sendStatus(201);
 });
 
 app.get('/getting', (req, res) => {
