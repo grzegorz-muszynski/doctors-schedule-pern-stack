@@ -35,11 +35,12 @@ db.connect();
 // Routes
 
 // Renders the page - seems unuseful=====================================
-// app.get('/', (req, res) => {
-    // When it's empty - table is created
-      //  res.render('schedule'); // When is only this line - table is created
-        // res.sendStatus(201); // When is only this line - table is NOT created
-// });
+app.get('/', (req, res) => {
+    // When it is all outcommented - app crashes
+    // When this route is empty - table is created
+    //  res.render('schedule'); // When is only this line - table is created
+    // res.sendStatus(201); // When is only this line - table is NOT created
+});
 
 app.get('/getting', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
