@@ -23,7 +23,7 @@ const db = new Client({
 db.connect();
 
 // app.use(express.static('public'));
-//app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
