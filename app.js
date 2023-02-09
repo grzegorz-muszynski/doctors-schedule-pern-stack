@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 
 // Renders the page
 app.get('/', (req, res) => {
-    res.render('schedule', console.log('hey'));
+    res.render('schedule');
 });
 
 app.get('/getting', (req, res) => {
