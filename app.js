@@ -21,9 +21,9 @@ const db = new Client({
 });
 
 db.connect();
-// foooooooooooooooooooo32423432
+
 // app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, "client/build"))); // Works (table is loaded). Without any express.static there is "internal server error"
+app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
@@ -41,11 +41,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
-// ROUTES
+// Routes
 
 // Renders the page
 app.get('/', (req, res) => {
-    // res.render('schedule');
+        res.render('schedule');
 });
 
 app.get('/getting', (req, res) => {
