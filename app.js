@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
+const path = require("path"); // Crucial for app.use
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path'); // Crucial for app.use
 
 const PORT = process.env.PORT || 4002;
 
@@ -44,8 +45,20 @@ app.use(bodyParser.json());
 
 // Renders the page
 app.get('/', (req, res) => {
-    res.render('schedule');
-    // res.sendStatus(201);
+    // res.render('schedule');
+});
+
+app.get('/getting', (req, res) => {
+    const sql2 = `SELECT * FROM visits`;
+    db.query(sql2, (err, data) => {
+        if (!err) {
+            let visitsDb = data.rows;
+            res.status(200).json(visitsDb);
+        } else {
+            console.log(err.message);
+        }
+        db.end;
+    });
 });
 
 app.get('/getting', (req, res) => {
