@@ -29,8 +29,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
-
-
 // Adding new directions due to React implementation
 // app.use('/css', express.static(__dirname + 'src'));
 // app.use('/js', express.static(__dirname + 'src'));
@@ -88,7 +86,7 @@ app.post('/posting', (req, res, next) => {
     ], function(err) {
         if (err) {
             console.log(err);
-            return res.sendStatus("doesn't work, sorry...", 500); // Edit here==========
+            return res.sendStatus(500);
         } else {
             return res.sendStatus(201);
         }
