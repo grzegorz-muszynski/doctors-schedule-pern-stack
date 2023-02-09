@@ -72,7 +72,7 @@ app.post('/posting', (req, res, next) => {
     ], function(err) {
         if (err) {
             console.log(err);
-            return res.sendStatus(500);
+            return res.sendStatus('doesnt work, sorry...", 500);
         } else {
             return res.sendStatus(201);
         }
