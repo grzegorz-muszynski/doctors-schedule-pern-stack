@@ -45,16 +45,18 @@ db.connect();
 // The route used by CellsCreator component
 // '/getting' makes the table is created. All different routes makes table doesn't render
 app.get('/getting', (req, res) => {
-    const sql2 = `SELECT * FROM visits`;
-    db.query(sql2, (err, data) => {
-        if (!err) {
-            let visitsDb = data.rows;
-            res.status(200).json(visitsDb);
-        } else {
-            console.log(err.message);
-        }
-        db.end;
+         res.status(200).json(2);
     });
+    // const sql2 = `SELECT * FROM visits`;
+    // db.query(sql2, (err, data) => {
+    //     if (!err) {
+    //         let visitsDb = data.rows;
+    //         res.status(200).json(visitsDb);
+    //     } else {
+    //         console.log(err.message);
+    //     }
+    //     db.end;
+    // });
 });
 // The routes used by Table components
 app.post('/posting', (req, res, next) => {
