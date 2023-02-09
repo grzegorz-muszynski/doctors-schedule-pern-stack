@@ -34,7 +34,7 @@ app.use('/css', express.static(__dirname + 'src'));
 app.use('/js', express.static(__dirname + 'src'));
 
 app.use('/img', express.static(__dirname + 'public/images'));
-
+console.log(__dirname);
 // app.set('views', './views');
 // app.set('view engine', 'ejs');
 
