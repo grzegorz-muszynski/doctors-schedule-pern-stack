@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 // The route used by CellsCreator component
 // changing route makes the table isn't created
 // app.get('https://doctors-schedule-pern-stack.herokuapp.com/getting', (req, res) => {
-app.get('foo', (req, res) => {
+app.get('/getting', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
         if (!err) {
