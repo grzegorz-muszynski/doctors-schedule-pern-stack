@@ -8,12 +8,17 @@ const {Client} = require('pg'); // PostgreSQL
 const PORT = process.env.PORT || 4002;
 
 // Middleware
-app.use(cors());
+app.use(cors()); // Enable CORS 
+app.use(express.json()); // Recognize Request Objects as JSON objects
 // app.use(express.json({ limit: '1mb' }));
-app.use(express.json());
-
+app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static('public'));
+// app.use(express.static(path.join("client/build")));
+//app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
+app.use(bodyParser.json());
 // Allows for using information coming from forms
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database
 const db = new Client({
@@ -24,18 +29,12 @@ const db = new Client({
 });
 db.connect();
 
-app.use(bodyParser.json());
-// app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, "client/build")));
-// app.use(express.static(path.join("client/build")));
-//app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
-
 
 // In CLI created the table: CREATE TABLE visits (id INTEGER PRIMARY KEY, name TEXT NOT NULL, surname TEXT NOT NULL, phone_number INTEGER NOT NULL, SSN TEXT NOT NULL, day TEXT NOT NULL DEFAULT '', time TEXT NOT NULL DEFAULT '');
 
 // Routes
 
-// Renders the page - seems unuseful===============================
+// Renders the page - seems unuseful=====================================
 app.get('/', (req, res) => {
         // res.render('schedule');
         // res.sendStatus(201);
