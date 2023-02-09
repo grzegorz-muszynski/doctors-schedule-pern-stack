@@ -42,8 +42,9 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // Routes
 
 // Renders the page - seems unuseful===============================
-app.get('/', (req, res) => {
-        res.render('schedule');
+app.get('/getting', (req, res) => {
+        // res.render('schedule');
+        res.sendStatus(201);
 });
 
 app.get('/getting', (req, res) => {
