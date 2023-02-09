@@ -43,10 +43,10 @@ app.use(bodyParser.json());
 // ROUTES
 
 // Renders the page
-// app.get('/', (req, res) => {
-    // res.render('schedule');
-    // res.sendStatus(201);
-// });
+app.get('/', (req, res) => {
+    res.render('schedule');
+    res.sendStatus(201);
+});
 
 app.get('/getting', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
