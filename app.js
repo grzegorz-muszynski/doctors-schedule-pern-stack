@@ -42,7 +42,10 @@ app.get('/', (req, res) => {
     // res.sendStatus(201); // When is only this line - table is NOT created
 });
 
-app.get('https://doctors-schedule-pern-stack.herokuapp.com/getting', (req, res) => {
+// The route used by CellsCreator component
+// changing route makes the table isn't created
+// app.get('https://doctors-schedule-pern-stack.herokuapp.com/getting', (req, res) => {
+app.get('foo', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
         if (!err) {
@@ -54,7 +57,7 @@ app.get('https://doctors-schedule-pern-stack.herokuapp.com/getting', (req, res) 
         db.end;
     });
 });
-
+// The routes used by Table components
 app.post('/posting', (req, res, next) => {
     // Inserting into a database
     const sql = 'INSERT INTO visits (name, surname, phone_number, SSN, day, time) VALUES ($1, $2, $3, $4, $5, $6)';
