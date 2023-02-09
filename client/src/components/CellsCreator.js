@@ -25,6 +25,11 @@ export function CellsCreator (props) {
     useEffect(() => {
       if (!backendData) return; // If there is still no data - won't do that
       // Making the array with dates for a current week
+
+
+        console.log('restored data viaa /getting', backendData);
+
+
       let lastMonday = new Date(props.lastMon);
       let weekDatesArray = [];
 
