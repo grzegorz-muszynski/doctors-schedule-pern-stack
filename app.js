@@ -54,19 +54,6 @@ app.get('/getting', (req, res) => {
     });
 });
 
-app.get('/getting', (req, res) => {
-    const sql2 = `SELECT * FROM visits`;
-    db.query(sql2, (err, data) => {
-        if (!err) {
-            let visitsDb = data.rows;
-            res.status(200).json(visitsDb);
-        } else {
-            console.log(err.message);
-        }
-        db.end;
-    });
-});
-
 app.post('/posting', (req, res, next) => {
     // Inserting into a database
     const sql = 'INSERT INTO visits (name, surname, phone_number, SSN, day, time) VALUES ($1, $2, $3, $4, $5, $6)';
@@ -80,7 +67,7 @@ app.post('/posting', (req, res, next) => {
     ], function(err) {
         if (err) {
             console.log(err);
-            return res.sendStatus(500);
+            return res.sendStatus('sth went wrong', 500);
         } else {
             return res.sendStatus(201);
         }
