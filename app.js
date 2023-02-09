@@ -35,16 +35,15 @@ db.connect();
 // Routes
 
 // Renders the page - seems unuseful=====================================
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
     // When it is all outcommented - table is created, app crashes after refreshing
     // When this route is empty - table is created, app crashes after refreshing
-     res.render('schedule'); // When is only this line - table is created, app crashes after refreshing
+    //  res.render('schedule'); // When is only this line - table is created, app crashes after refreshing
     // res.sendStatus(201); // When is only this line - table is NOT created
-});
+// });
 
 // The route used by CellsCreator component
-// changing route makes the table isn't created
-// app.get('https://doctors-schedule-pern-stack.herokuapp.com/getting', (req, res) => {
+// '/getting' makes the table is created. All different routes makes table doesn't render
 app.get('/getting', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
