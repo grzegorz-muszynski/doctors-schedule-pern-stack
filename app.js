@@ -36,9 +36,9 @@ db.connect();
 
 // Renders the page - seems unuseful=====================================
 app.get('/', (req, res) => {
-    // When it is all outcommented - app crashes
-    // When this route is empty - table is created
-    //  res.render('schedule'); // When is only this line - table is created
+    // When it is all outcommented - table is created, app crashes after refreshing
+    // When this route is empty - table is created, app crashes after refreshing
+     res.render('schedule'); // When is only this line - table is created
     // res.sendStatus(201); // When is only this line - table is NOT created
 });
 
