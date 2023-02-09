@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Database
 const db = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL, // Heroku addons
     ssl: {
         rejectUnauthorized: false
     }
