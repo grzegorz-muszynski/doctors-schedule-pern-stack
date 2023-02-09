@@ -23,7 +23,7 @@ const db = new Client({
 db.connect();
 
 // app.use(express.static('public'));
-//app.use(express.static(path.join(__dirname, "client/build"))); // Works (table is loaded)
+app.use(express.static(path.join(__dirname, "client/build"))); // Works (table is loaded). Without any express.static there is "internal server error"
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 
