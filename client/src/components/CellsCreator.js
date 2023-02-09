@@ -23,6 +23,7 @@ export function CellsCreator (props) {
     }, [props.lastMon, props.triggerRender]); // after skipping a week or invoking the post/change/delete function, the program will render new cells
 
     useEffect(() => {
+      console.log(__dirname);
       if (!backendData) return; // If there is still no data - won't do that
       // Making the array with dates for a current week
       let lastMonday = new Date(props.lastMon);
