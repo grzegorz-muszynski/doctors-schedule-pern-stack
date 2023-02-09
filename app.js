@@ -38,11 +38,11 @@ db.connect();
 app.get('/', (req, res) => {
     // When it is all outcommented - table is created, app crashes after refreshing
     // When this route is empty - table is created, app crashes after refreshing
-     res.render('schedule'); // When is only this line - table is created
+     res.render('schedule'); // When is only this line - table is created, app crashes after refreshing
     // res.sendStatus(201); // When is only this line - table is NOT created
 });
 
-app.get('/getting', (req, res) => {
+app.get('https://doctors-schedule-pern-stack.herokuapp.com/getting', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
         if (!err) {
