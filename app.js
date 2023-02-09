@@ -24,7 +24,7 @@ db.connect();
 
 // app.use(express.static('public'));
 //app.use(express.static(path.join(__dirname, "client/build")));
-app.use(express.static(path.join("client/build")));
+// app.use(express.static(path.join("client/build")));
 app.use(express.static("client/build")); // Recognizes Request Objects as JSON objects
 
 // Allows for using information coming from forms
