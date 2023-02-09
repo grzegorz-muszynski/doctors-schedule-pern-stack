@@ -89,6 +89,11 @@ export const Table = () => {
         }
         let postedData = inputsArray.concat(coordinates);
 
+
+        console.log(postedData);
+
+
+
         const response = await fetch(`${API_ENDPOINT}posting`, {
         method: 'POST',
         headers: {
