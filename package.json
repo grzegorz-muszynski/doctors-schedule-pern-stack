@@ -4,7 +4,8 @@
   "main": "app.js",
   "private": true,
   "engines": {
-    "node": "18.14.0"
+    "node": "18.14.0",
+    "npm": "9.4.2"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
