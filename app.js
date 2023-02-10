@@ -81,7 +81,7 @@ app.post('/posting', (req, res, next) => {
 //             return res.sendStatus(201);
 //         }
 //     });
-
+    console.log('message to heroku logs====================!!!!!!!!!!!!!');
     return res.status(200).json(33333); // the error comes from bad db implementation. When there is this action - there are no problems
 });
 
