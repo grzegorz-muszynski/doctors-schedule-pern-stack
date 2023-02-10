@@ -110,6 +110,7 @@ export const Table = () => {
             data => {
               console.log(data);
             }
+          )
     }
     const changeHandler = async () => {
         let popUpForm = document.getElementById('popUpForm');
