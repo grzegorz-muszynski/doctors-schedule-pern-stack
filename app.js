@@ -59,7 +59,7 @@ db.connect();
 // });
 // Test
 app.get('/getting', (req, res) => {
-    res.status(200).json(2); // Makes the app crashes immediately
+    res.status(200).json(54321); // Makes the app crashes immediately
 });
 
 // The routes used by Table components
