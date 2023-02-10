@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.1.0",
-  "description": "",
+  "description": "Continuation of my Doctor's Schedule project. Main difference is completely different front-end part basing on React.js instead of vanilla JavaScript. Thinking about Heroku, PostgreSQL replaced SQLite. The application will be constantly enriched with new features.\r ### Running app\r If you want to run an app locally, crucial things are having PostgreSQL managing tool and replacing a part of code in app.js:\r ```\r   const db = new Client({\r       connectionString: process.env.DATABASE_URL,\r       ssl: {\r        rejectUnauthorized: false\r       }\r   });\r ```\r Instead of the code above, there should be code below, filled with proper data:\r ```\r   const db = new Client({\r       host: \"localhost\",\r       user: \"xxx\",\r       port: xxx,\r       database: \"xxx\",\r       password: \"xxx\"\r   });\r ```\r In the front-end part, src/components/Table.js, assign the API_ENDPOINT like below:\r ```\r const API_ENDPOINT = \"http://127.0.0.1:4002/\";\r ```\r When it's done, type in a terminal ``` node app.js ``` running a backend part. Then, in a second terminal type ```npm start``` and wait until the program will open page in your browser.",
   "main": "app.js",
   "engines": {
     "node": "18.14.0",
@@ -16,5 +16,8 @@
     "express": "^4.18.2",
     "path": "^0.12.7",
     "pg": "^8.8.0"
-  }
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
