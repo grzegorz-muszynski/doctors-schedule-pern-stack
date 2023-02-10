@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+const app = express(); // importing the CORS library to allow Cross-origin resource sharing
 const cors = require('cors');
 const path = require("path"); // Crucial for app.use
 const bodyParser = require('body-parser');
@@ -12,13 +12,14 @@ app.use(cors()); // Enable CORS
 app.use(express.json()); // Recognize Request Objects as JSON objects
 // app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "client/build"))); // Was before 6:24 10/02/2023
 // app.use(express.static('public'));
 // app.use(express.static(path.join("client/build")));
 //app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 app.use(bodyParser.json());
 // Allows for using information coming from forms
-// app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true })); // My old code
+app.use(bodyParser.urlencoded({ extended: true })); // From Codecademy
 
 // Database
 const db = new Client({
