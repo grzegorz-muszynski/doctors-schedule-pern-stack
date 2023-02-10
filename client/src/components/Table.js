@@ -94,23 +94,23 @@ export const Table = () => {
 
 
 
-        // const response = await fetch(`${API_ENDPOINT}posting`, {
-        // method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        // body: JSON.stringify(postedData)
-        // });
+        const response = await fetch(`${API_ENDPOINT}posting`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postedData)
+        });
 
-        fetch(`${API_ENDPOINT}posting`, {
-            method: 'POST'
-          }).then(
-            response => response.json()
-          ).then(
-            data => {
-              console.log(data);
-            }
-          )
+        // fetch(`${API_ENDPOINT}posting`, {
+        //     method: 'POST'
+        //   }).then(
+        //     response => response.json()
+        //   ).then(
+        //     data => {
+        //       console.log(data);
+        //     }
+        //   )
     }
     const changeHandler = async () => {
         let popUpForm = document.getElementById('popUpForm');
