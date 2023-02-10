@@ -64,25 +64,25 @@ app.get('/getting', (req, res) => {
 
 // The routes used by Table components
 app.post('/posting', (req, res, next) => {
-//     // Inserting into a database
-//     const sql = 'INSERT INTO visits (name, surname, phone_number, SSN, day, time) VALUES ($1, $2, $3, $4, $5, $6)';
-//     db.query(sql, [
-//         req.body[0],
-//         req.body[1],
-//         req.body[2],
-//         req.body[3],
-//         req.body[4],
-//         req.body[5]
-//     ], function(err) {
-//         if (err) {
-//             console.log(err);
-//             return res.sendStatus('sth went wrong', 500);
-//         } else {
-//             return res.sendStatus(201);
-//         }
-//     });
-    console.log('message to heroku logs====================!!!!!!!!!!!!!');
-    return res.status(200).json(33333); // the error comes from bad db implementation. When there is this action - there are no problems
+     // Inserting into a database
+     const sql = 'INSERT INTO visits (name, surname, phone_number, SSN, day, time) VALUES ($1, $2, $3, $4, $5, $6)';
+    db.query(sql, [
+        req.body[0],
+        req.body[1],
+        req.body[2],
+        req.body[3],
+        req.body[4],
+        req.body[5]
+    ], function(err) {
+        if (err) {
+            console.log("Error while inserting into a database: ", err);
+            return res.sendStatus(500);
+        } else {
+            return res.sendStatus(201);
+        }
+    });
+    // console.log('message to heroku logs====================!!!!!!!!!!!!!');
+    //  res.status(200).json(33333); // the error comes from bad db implementation. When there is this action - there are no problems
 });
 
 app.put('/change', (req, res, next) => {
