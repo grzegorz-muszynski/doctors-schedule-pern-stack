@@ -63,7 +63,7 @@ app.get('/getting', (req, res) => {
 });
 
 // The routes used by Table components
-// app.post('/posting', (req, res, next) => {
+app.post('/posting', (req, res, next) => {
 //     // Inserting into a database
 //     const sql = 'INSERT INTO visits (name, surname, phone_number, SSN, day, time) VALUES ($1, $2, $3, $4, $5, $6)';
 //     db.query(sql, [
