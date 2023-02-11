@@ -15,7 +15,7 @@ Instead of the code above, there should be code below, filled with proper data:
   const db = new Client({
       host: "localhost",
       user: "xxx",
-      port: xxx,
+      port: "xxx",
       database: "xxx",
       password: "xxx"
   });
@@ -24,4 +24,4 @@ In the front-end part, src/components/Table.js, assign the API_ENDPOINT like bel
 ```
 const API_ENDPOINT = "http://127.0.0.1:4002/";
 ```
-When it's done, type in a terminal ``` node app.js ``` running a backend part. Then, in a second terminal type ```npm start``` and wait until the program will open page in your browser.
+When it's done, type in a terminal ```node app.js``` running a backend part. Then, in a second terminal type ```npm start``` and wait until the program will open page in your browser.
