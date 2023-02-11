@@ -89,28 +89,13 @@ export const Table = () => {
         }
         let postedData = inputsArray.concat(coordinates);
 
-
-        console.log(postedData);
-
-
-
         const response = await fetch(`${API_ENDPOINT}posting`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postedData)
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postedData)
         });
-
-        // fetch(`${API_ENDPOINT}posting`, {
-        //     method: 'POST'
-        //   }).then(
-        //     response => response.json()
-        //   ).then(
-        //     data => {
-        //       console.log(data);
-        //     }
-        //   )
     }
     const changeHandler = async () => {
         let popUpForm = document.getElementById('popUpForm');

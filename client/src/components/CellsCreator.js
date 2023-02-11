@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { usSystem } from '../hoursArray';
 import { styles } from './CellsCreator.styles';
 
-const API_ENDPOINT = "/"; // when I put here link to heroku repo - app crashes after refreshing
+const API_ENDPOINT = "/"
 // The function takes the array with hours as the argument and creates as many rows as the length of array is
 export function CellsCreator (props) {
     const [backendData, setBackendData] = useState();
@@ -24,12 +24,6 @@ export function CellsCreator (props) {
 
     useEffect(() => {
       if (!backendData) return; // If there is still no data - won't do that
-      // Making the array with dates for a current week
-
-
-        console.log('restored data viaa /getting', backendData);
-
-
       let lastMonday = new Date(props.lastMon);
       let weekDatesArray = [];
 
