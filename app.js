@@ -8,18 +8,11 @@ const {Client} = require('pg'); // PostgreSQL
 const PORT = process.env.PORT || 4002;
 
 // Middleware
-app.use(cors()); // Enable CORS 
+app.use(cors());
 app.use(express.json()); // Recognize Request Objects as JSON objects
-// app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, "client/build")));
-// app.use(express.static(path.join(__dirname, "client/build"))); // Was before 6:24 10/02/2023
-// app.use(express.static('public'));
-// app.use(express.static(path.join("client/build")));
-//app.use(express.static("client/build")); // The crucial line for connecting front-end part correctly
 app.use(bodyParser.json());
-// Allows for using information coming from forms
-// app.use(express.urlencoded({ extended: true })); // My old code
-app.use(bodyParser.urlencoded({ extended: true })); // From Codecademy
+app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded in old version
 
 // Database
 const db = new Client({
@@ -30,21 +23,7 @@ const db = new Client({
 });
 db.connect();
 
-
-// In CLI created the table: CREATE TABLE visits (id INTEGER PRIMARY KEY, name TEXT NOT NULL, surname TEXT NOT NULL, phone_number INTEGER NOT NULL, SSN TEXT NOT NULL, day TEXT NOT NULL DEFAULT '', time TEXT NOT NULL DEFAULT '');
-
-// Routes
-
-// Renders the page - seems unuseful=====================================
-// app.get('/', (req, res) => {
-    // When it is all outcommented - table is created, app crashes after refreshing
-    // When this route is empty - table is created, app crashes after refreshing
-    //  res.render('schedule'); // When is only this line - table is created, app crashes after refreshing
-    // res.sendStatus(201); // When is only this line - table is NOT created
-// });
-
-// The route used by CellsCreator component
-// '/getting' makes the table is created. All different routes makes table doesn't render
+// ROUTES
 app.get('/getting', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
@@ -57,10 +36,6 @@ app.get('/getting', (req, res) => {
         db.end;
     });
 });
-// Test
-//app.get('/getting', (req, res) => {
-   // res.status(200).json(54321); // Makes the app crashes immediately
-// });
 
 // The routes used by Table components
 app.post('/posting', (req, res, next) => {
@@ -81,8 +56,6 @@ app.post('/posting', (req, res, next) => {
             return res.sendStatus(201);
         }
     });
-    // console.log('message to heroku logs====================!!!!!!!!!!!!!');
-    //  res.status(200).json(33333); // the error comes from bad db implementation. When there is this action - there are no problems
 });
 
 app.put('/change', (req, res, next) => {
