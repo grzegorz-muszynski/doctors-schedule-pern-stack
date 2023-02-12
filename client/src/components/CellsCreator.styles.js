@@ -1,4 +1,4 @@
-let myRed = '#DF0815'
+let myRed = '#DF0815';
 
 const bookedSlotRed = {
     backgroundColor: myRed,

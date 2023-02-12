@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
@@ -150,6 +151,7 @@ export const Table = () => {
     <body>
         <img src='./images/doctor-work.jpg' id='wallpaper' alt="wallpaper" />
         
+        <Link to='/home' id="homeBtn">Home</Link>
         <h1 id="title">Doctor's schedule</h1>
 
         <img className="arrows" id="leftArrow" src="./images/arrowBtn.png" alt="leftArrow" onClick={leftArrowHandler} />
