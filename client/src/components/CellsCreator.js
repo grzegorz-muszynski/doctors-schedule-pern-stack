@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { usSystem } from '../hoursArray';
 import { styles } from './CellsCreator.styles';
 
-const API_ENDPOINT = "http://127.0.0.1:4002/"
+const API_ENDPOINT = "http://127.0.0.1:4002/";
+
 // The function takes the array with hours as the argument and creates as many rows as the length of array is
 export function CellsCreator (props) {
     const [backendData, setBackendData] = useState();
