@@ -21,6 +21,25 @@ body {
     z-index: 1;
 }
 
+#homeBtn {
+    font-weight: 800;
+    font-size: 30px;
+    text-decoration: none;
+    position: absolute;
+    z-index: 2;
+    color: black;
+    margin-top: 5px;
+    margin-left: 50px;
+    display: inline-block;
+    right: calc(50% + 551px);
+}
+
+@media (max-width: 1470px) {
+    #homeBtn {
+        right: calc(50% + 32vw);
+    }
+}
+
 #wallpaper {
     position: fixed;
     z-index: 0;
@@ -42,7 +61,7 @@ body {
 }
 
 .timeSlot {
-    padding: 9px;
+    padding-right: 4px;
     text-align: right;
     font-weight: 500;
 }
@@ -62,30 +81,38 @@ body {
     position: relative;
     overflow: hidden;
 }
-.cells, .timeSlot, .scheduleRow {
-    height: 50px;
+
+.cells, .oldCells, .timeSlot {
+    height: 35px;
 }
 
-.cells {
+.cells, .oldCells {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: inline-block;
     width: 200px;
-    padding: 9px 0;
+    padding: 0;
     border: 1px solid hsl(180, 57%, 34%);
 }
 
 @media (max-width: 1470px) {
-    .cells {
+    .cells, .oldCells {
         width: 12vw;
     }
+}
+
+.oldCells {
+    border: 1px solid hsl(180, 100%, 21%);
+    background-color: hsl(0, 100%, 39%);
+    background-color: hsl(180, 100%, 31%);
 }
 
 .days {
     text-align: center;
     padding: 0px;
     font-size: 19px;
+    height: 48px;
 }
 
 .dates {

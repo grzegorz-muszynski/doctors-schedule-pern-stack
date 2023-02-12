@@ -23,51 +23,63 @@ export function CellsCreator (props) {
       )    
     }, [props.lastMon, props.triggerRender]); // after skipping a week or invoking the post/change/delete function, the program will render new cells
 
+    // Generating cells
     useEffect(() => {
       if (!backendData) return; // If there is still no data - won't do that
       let lastMonday = new Date(props.lastMon);
-      let weekDatesArray = [];
+      let today = new Date();
+      let currentTime = today.toLocaleTimeString();
+      let weekDatesStrings = []; // Collects strings with dates for currently watched week
+      let weekDates = []; // Collects dates as objects
 
       for (let i = 0; i < 6; i++) {
         let anotherDate = new Date(lastMonday); // By default, assigns current date and time. The value will be changed in the next line
         anotherDate.setDate(lastMonday.getDate() + i);
-        let anotherDateString = anotherDate.toLocaleDateString();
+        weekDates.push(anotherDate);
 
-        weekDatesArray.push(anotherDateString);
+        let anotherDateString = anotherDate.toLocaleDateString();
+        weekDatesStrings.push(anotherDateString);
       }
 
       let allRows = [];
       // Every hour 'receives' one row
       usSystem.forEach(time => {
-          // Creating 6 slots for one row
           let slotsInRow = [];
-          
+          let slotTime = new Date('July 1, 2001 ' + time).toLocaleTimeString(); // Putting random date here just in purpose of using Date object and extracting slot's time in 24h format
+
+          // Creating 6 slots for one row
           for (let n = 0; n < 6; n++) {
-            let differentStyling;
+            let isSlotBooked;
+            let isOutOfDate = false;
             let slotInfo;
             // Each row from a database is compared to a current slot. If coordinates (time and date) are same - slot gets more dynamic data and is properly styled
             let patientData=null;
 
             Array.from(backendData).forEach((bookedSlot, index) => {
-              if (weekDatesArray[n] === bookedSlot.day && time === bookedSlot.time) {
-                patientData=[bookedSlot.name, bookedSlot.surname, bookedSlot.phone_number, bookedSlot.ssn]
+              if (weekDatesStrings[n] === bookedSlot.day && time === bookedSlot.time) {
+                patientData=[bookedSlot.name, bookedSlot.surname, bookedSlot.phone_number, bookedSlot.ssn];
 
-                return differentStyling = 1, slotInfo = bookedSlot, patientData;
+                return isSlotBooked = 1, slotInfo = bookedSlot, patientData;
               } 
             });
+
+            // Checking if slots is from past day or today's date but past hours
+            if (weekDates[n] < today || (weekDates[n].toLocaleDateString() === today.toLocaleDateString() && slotTime < currentTime)) isOutOfDate = true;
+
             slotsInRow.push(
               <td 
                 key={'Day: ' + n + ' Time: ' + time} 
-                className='slot cells' 
+                className={ isOutOfDate ? 'slot oldCells' : 'slot cells'}
                 onClick={props.showForm} 
-                data-coordinates={[weekDatesArray[n], time]}
+                data-coordinates={[weekDatesStrings[n], time]}
                 data-patient={patientData}
-                style={ differentStyling && styles.bookedSlotRed} 
+                style={ isSlotBooked && styles.bookedSlotRed} 
               >
-                {differentStyling && slotInfo.surname}
+                {isSlotBooked && slotInfo.surname}
               </td>
             )
           }
+
           // "Assembling" a row from elements and adding to array of all rows
           let row = (
             <tr key={'Row-time ' + time} className="scheduleRow">
@@ -78,7 +90,7 @@ export function CellsCreator (props) {
           allRows.push(row);
       });
       setRowsToDisplay(allRows);
-    }, [backendData]); // Will be invoked only while changing backendData
+    }, [backendData]); // Will be invoked only while changing 
 
     return (rowsToDisplay);
 }
