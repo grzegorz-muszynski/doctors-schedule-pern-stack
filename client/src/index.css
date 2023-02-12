@@ -82,11 +82,11 @@ body {
     overflow: hidden;
 }
 
-.cells, .timeSlot {
+.cells, .oldCells, .timeSlot {
     height: 35px;
 }
 
-.cells {
+.cells, .oldCells {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -97,9 +97,15 @@ body {
 }
 
 @media (max-width: 1470px) {
-    .cells {
+    .cells, .oldCells {
         width: 12vw;
     }
+}
+
+.oldCells {
+    border: 1px solid hsl(180, 100%, 21%);
+    background-color: hsl(0, 100%, 39%);
+    background-color: hsl(180, 100%, 31%);
 }
 
 .days {

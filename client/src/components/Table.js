@@ -5,7 +5,7 @@ import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
-const API_ENDPOINT = "http://127.0.0.1:4002/";
+const API_ENDPOINT = "/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
@@ -98,6 +98,7 @@ export const Table = () => {
             body: JSON.stringify(postedData)
         });
     }
+
     const changeHandler = async () => {
         let popUpForm = document.getElementById('popUpForm');
         let allInputs =  await new FormData(popUpForm);
@@ -115,9 +116,9 @@ export const Table = () => {
             },
             body: JSON.stringify(newData)
         });
-        }
+    }
 
-        const deleteHandler = async () => {
+    const deleteHandler = async () => {
         let dateId = coordinates[0];
         let timeId = coordinates[1];
 
@@ -127,17 +128,17 @@ export const Table = () => {
                 'Content-Type': 'application/json'
             }
         });
-        }
+    }
 
         // The event handler for posting, changing and deleting data via pop up form
-        const submitting = (e) => {
+    const submitting = (e) => {
         e.preventDefault();
 
         let clickedBtn = document.activeElement.id;
 
         if (clickedBtn ==="submitBtn") {
             submitHandler();
-            setPatientData({}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, modified is inputValue in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput
+            setPatientData({}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput
         } else if (clickedBtn ==="changeBtn") {
             changeHandler();
         } else {

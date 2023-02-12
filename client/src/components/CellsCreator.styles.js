@@ -1,4 +1,4 @@
-let myRed = '#DF0815';
+let myRed = 'hsl(0, 100%, 48%)';
 
 const bookedSlotRed = {
     backgroundColor: myRed,
