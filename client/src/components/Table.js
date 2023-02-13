@@ -152,7 +152,12 @@ export const Table = () => {
     <body>
         <img src='./images/doctor-work.jpg' id='wallpaper' alt="wallpaper" />
         
-        <Link to='/home' id="homeBtn">Home</Link>
+        <div id="navButtons">
+            <Link to='/home' id='homeBtn'>Home</Link>
+            <div className='separator'>|</div>
+            <div id='chooseBtn'>Change doctor</div>
+        </div>
+
         <h1 id="title">Doctor's schedule</h1>
 
         <img className="arrows" id="leftArrow" src="./images/arrowBtn.png" alt="leftArrow" onClick={leftArrowHandler} />

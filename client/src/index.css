@@ -21,22 +21,37 @@ body {
     z-index: 1;
 }
 
-#homeBtn {
+#navButtons {
     font-weight: 800;
     font-size: 30px;
-    text-decoration: none;
     position: absolute;
     z-index: 2;
+    right: calc(50% + 240px);
+    width: 400px;
+    top: 2px;
+}
+
+#homeBtn, #chooseBtn {
+    height: 55px;
     color: black;
-    margin-top: 5px;
-    margin-left: 50px;
+    text-decoration: none;
     display: inline-block;
-    right: calc(50% + 551px);
+}
+
+.separator {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 42px;
+    font-weight: 400;
+    margin-left: 4px;
+    margin-right: 4px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
 }
 
 @media (max-width: 1470px) {
-    #homeBtn {
-        right: calc(50% + 32vw);
+    #navButtons {
+        right: calc(50% + 10vw);
     }
 }
 
@@ -51,6 +66,7 @@ body {
 #schedule {
     position: relative;
     background-color: hsl(180, 57%, 59%);
+    /* background-color: hsl(180, 62%, 59%); */
     margin: 10px auto;
     opacity: 0.8;
 }
@@ -68,12 +84,12 @@ body {
 
 @media (max-width: 1470px) {
     .firstColumn {
-        width: 3vw;
+        width: 94px;
         min-width: 85px;
         min-height: 27px;
     }
     .timeSlot {
-        padding: 0;
+        padding: 1;
     }
 }
 
