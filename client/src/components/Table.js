@@ -153,7 +153,8 @@ export const Table = () => {
         <img src='./images/doctor-work.jpg' id='wallpaper' alt="wallpaper" />
         
         <div id="navButtons">
-            <div><Link to='/home' id='homeBtn'>Home</Link></div>
+            <Link to='/home' id='homeBtn'>Home</Link>
+            <div class='separator'>|</div>
             <div id='chooseBtn'>Change doctor</div>
         </div>
 
