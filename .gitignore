@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # My files
+.env
 codeForLocalVersion.txt
 appjsCopy.txt
 createTable.txt
