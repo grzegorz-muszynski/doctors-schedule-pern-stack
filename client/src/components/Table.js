@@ -154,7 +154,7 @@ export const Table = () => {
         
         <div id="navButtons">
             <Link to='/home' id='homeBtn'>Home</Link>
-            <div class='separator'>|</div>
+            <div className='separator'>|</div>
             <div id='chooseBtn'>Change doctor</div>
         </div>
 

@@ -34,10 +34,6 @@ export function CellsCreator (props) {
 
     // Generating cells
     useEffect(() => {
-      let checking = new Date();
-      console.log('refreshed', timeTrigger, 'hours: ', checking);
-
-
       if (!backendData) return; // If there is still no data - won't do that
       let lastMonday = new Date(props.lastMon);
       let today = new Date();
@@ -89,7 +85,7 @@ export function CellsCreator (props) {
                 onClick={props.showForm} 
                 data-coordinates={[weekDatesStrings[n], time]}
                 data-patient={patientData}
-                style={ isSlotBooked && styles.bookedSlotRed} 
+                style={ isSlotBooked && (isOutOfDate ? styles.bookedSlotOld : styles.bookedSlotRed)} 
               >
                 {isSlotBooked && slotInfo.surname}
               </td>

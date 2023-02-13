@@ -66,6 +66,7 @@ body {
 #schedule {
     position: relative;
     background-color: hsl(180, 57%, 59%);
+    /* background-color: hsl(180, 62%, 59%); */
     margin: 10px auto;
     opacity: 0.8;
 }
@@ -83,7 +84,6 @@ body {
 
 @media (max-width: 1470px) {
     .firstColumn {
-        /* width: 7vw; */
         width: 94px;
         min-width: 85px;
         min-height: 27px;
