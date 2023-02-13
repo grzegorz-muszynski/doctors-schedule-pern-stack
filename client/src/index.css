@@ -21,22 +21,29 @@ body {
     z-index: 1;
 }
 
-#homeBtn {
+#navButtons {
     font-weight: 800;
     font-size: 30px;
-    text-decoration: none;
     position: absolute;
     z-index: 2;
-    color: black;
+    /* color: black; */
     margin-top: 5px;
-    margin-left: 50px;
+    /* margin-left: 300px; */
     display: inline-block;
-    right: calc(50% + 551px);
+
+    right: calc(50% + 151px);
+}
+
+#homeBtn, #chooseBtn {
+    /* position: absolute;
+    z-index: 3; */
+    color: black;
+    text-decoration: none;
 }
 
 @media (max-width: 1470px) {
     #homeBtn {
-        right: calc(50% + 32vw);
+        /* right: calc(50% + 32vw); */
     }
 }
 

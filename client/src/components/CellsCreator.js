@@ -3,12 +3,21 @@ import React, { useState, useEffect } from 'react';
 import { usSystem } from '../hoursArray';
 import { styles } from './CellsCreator.styles';
 
-const API_ENDPOINT = "/";
+const API_ENDPOINT = "http://127.0.0.1:4002/";
 
 // The function takes the array with hours as the argument and creates as many rows as the length of array is
 export function CellsCreator (props) {
     const [backendData, setBackendData] = useState();
     const [rowsToDisplay, setRowsToDisplay] = useState();
+    const [timeTrigger, setTimeTrigger] = useState(true); // timeTrigger is used for refreshing useEffect responsible for generating cells every one minute 
+    let minute = 60000;
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setTimeTrigger(!timeTrigger);
+      }, minute);
+      return () => clearInterval(interval); 
+    }, [timeTrigger])
 
     // Getting data from the database
     useEffect(() => {
@@ -25,6 +34,10 @@ export function CellsCreator (props) {
 
     // Generating cells
     useEffect(() => {
+      let checking = new Date();
+      console.log('refreshed', timeTrigger, 'hours: ', checking);
+
+
       if (!backendData) return; // If there is still no data - won't do that
       let lastMonday = new Date(props.lastMon);
       let today = new Date();
@@ -40,6 +53,7 @@ export function CellsCreator (props) {
         let anotherDateString = anotherDate.toLocaleDateString();
         weekDatesStrings.push(anotherDateString);
       }
+      
 
       let allRows = [];
       // Every hour 'receives' one row
@@ -63,8 +77,10 @@ export function CellsCreator (props) {
               } 
             });
 
-            // Checking if slots is from past day or today's date but past hours
-            if (weekDates[n] < today || (weekDates[n].toLocaleDateString() === today.toLocaleDateString() && slotTime < currentTime)) isOutOfDate = true;
+            // Checking if a slot is from past day or today's date but past hours
+            let todayMidnight = new Date(today);
+            todayMidnight.setHours(0); // Setting early hours to fix the bug (weekDates[n] for current day was showing same date but with one second less which led to case when first condition below was true and all slots for today were marked as outdated)
+            if (weekDates[n] < todayMidnight || (weekDates[n].toLocaleDateString() === today.toLocaleDateString() && slotTime < currentTime)) isOutOfDate = true;
 
             slotsInRow.push(
               <td 
@@ -90,7 +106,7 @@ export function CellsCreator (props) {
           allRows.push(row);
       });
       setRowsToDisplay(allRows);
-    }, [backendData]); // Will be invoked only while changing 
+    }, [backendData, props.lastMon, timeTrigger]); // Will be invoked only while changing 
 
     return (rowsToDisplay);
 }
