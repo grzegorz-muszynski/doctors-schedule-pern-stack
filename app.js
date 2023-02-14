@@ -4,8 +4,16 @@ const cors = require('cors');
 const path = require("path"); // Crucial for app.use
 const bodyParser = require('body-parser');
 const {Client} = require('pg');  // PostgreSQL
-require("dotenv").config(); // for .env
+// require("dotenv").config(); // for .env
+
 const PORT = process.env.PORT || 4002;
+
+// Middleware
+app.use(cors());
+app.use(express.json()); // Recognize Request Objects as JSON objects
+app.use(express.static(path.join(__dirname, "client/build")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded in old version
 
 // Database
 const db = new Client({
@@ -15,13 +23,6 @@ const db = new Client({
     }
 });
 db.connect;
-
-// Middleware
-app.use(cors());
-app.use(express.json()); // Recognize Request Objects as JSON objects
-app.use(express.static(path.join(__dirname, "client/build")));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded in old version
 
 // ROUTES
 app.get('/getting', (req, res) => {
