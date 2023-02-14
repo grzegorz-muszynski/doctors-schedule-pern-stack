@@ -3,17 +3,18 @@ const app = express(); // importing the CORS library to allow Cross-origin resou
 const cors = require('cors');
 const path = require("path"); // Crucial for app.use
 const bodyParser = require('body-parser');
-const Client = require('pg'); // PostgreSQL
+const {Client} = require('pg');  // PostgreSQL
 require("dotenv").config(); // for .env
 const PORT = process.env.PORT || 4002;
 
+// Database
 const db = new Client({
     connectionString: process.env.DATABASE_URL, // Heroku addons
     ssl: {
         rejectUnauthorized: false
     }
 });
-db.connect;
+db.connect();
 
 // Middleware
 app.use(cors());
