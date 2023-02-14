@@ -140,7 +140,7 @@ export const Table = () => {
             submitHandler().then(() => {
                 setTriggerRender(!triggerRender); // When the variable changes after each CRUD action, it triggers rerendering cells in CellsCreator
             });
-            setPatientData({name: '', surname: '', phone: '', ssn: ''}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput
+            setPatientData({}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput. It's imortant to set patient data NOT with value: {name: '', surname: '', phone: '', ssn: ''} - then it would be the same like a vlue of empty slot, React wouldn't see any changes and inputs in the pop up form wouldn't be updated.
         } else if (clickedBtn ==="changeBtn") {
             changeHandler().then(() => {
                 setTriggerRender(!triggerRender);
