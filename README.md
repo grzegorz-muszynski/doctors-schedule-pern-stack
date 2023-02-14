@@ -7,7 +7,7 @@ Continuation of my Doctor's Schedule project. Main difference is completely diff
   PG_PASSWORD = xxx
   PG_HOST = xxx
   PG_PORT = xxx
-  PG_DATABASE = xxx
+  PG_DATABASE = xx
 ```
 2. In two front-end files, client\src\components\Table.js and client\src\components\CellsCreator.js, assign the API_ENDPOINTs like below:
 ```
