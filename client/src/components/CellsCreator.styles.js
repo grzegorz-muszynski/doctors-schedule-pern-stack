@@ -1,4 +1,5 @@
-let myRed = 'hsl(0, 100%, 48%)';
+let myRed = 'orange';
+// let myRed = 'hsl(0, 100%, 48%)';
 let oldColor = 'hsl(180, 100%, 21%)';
 
 const bookedSlotRed = {

@@ -151,7 +151,7 @@ body {
 #popUpBackground {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(169, 194, 195, 0.4); */
     position: fixed;
     top: 0;
     display: none;
@@ -168,8 +168,15 @@ body {
 #popUp {
     width: 450px;
     height: 300px;
-    background-color: #b7b7b7;
     margin: 280px auto;
+    /* background-color: #b7b7b7; */
+    /* Glass effect */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 #popUpForm {
