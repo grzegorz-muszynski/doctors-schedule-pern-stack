@@ -22,9 +22,11 @@ export function FirstRowCreator (props) {
     }, [props.lastMon]);
 
     return (
-        <tr>
-            <th scope="col" className="days firstColumn">Hours</th>
-            {weekDates}
-        </tr>
+        <tbody>
+            <tr>
+                <th scope="col" className="days firstColumn">Hours</th>
+                {weekDates}
+            </tr>
+        </tbody>
     )
 }

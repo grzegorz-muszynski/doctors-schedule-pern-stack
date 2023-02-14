@@ -149,7 +149,7 @@ export const Table = () => {
     }
 
     return (
-    <body>
+    <>
         <img src='./images/doctor-work.jpg' id='wallpaper' alt="wallpaper" />
         
         <div id="navButtons">
@@ -165,9 +165,11 @@ export const Table = () => {
 
         <table id="schedule">
             <FirstRowCreator lastMon={currentWeekMonday} />
-            <CellsCreator lastMon={currentWeekMonday} showForm={showForm} triggerRender={triggerRender} />
+            <tbody>
+                <CellsCreator lastMon={currentWeekMonday} showForm={showForm} triggerRender={triggerRender} />
+            </tbody>
         </table>
         <PopUpForm coordinates={coordinates} patientData={patientData} submitting={submitting} closeForm={closeForm} />
-    </body>
+    </>
     )
 }
