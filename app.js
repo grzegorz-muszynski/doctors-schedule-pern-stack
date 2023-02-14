@@ -14,8 +14,7 @@ const db = new Client({
         rejectUnauthorized: false
     }
 });
-db.connect
-
+db.connect;
 
 // Middleware
 app.use(cors());
