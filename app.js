@@ -3,7 +3,7 @@ const app = express(); // importing the CORS library to allow Cross-origin resou
 const cors = require('cors');
 const path = require("path"); // Crucial for app.use
 const bodyParser = require('body-parser');
-const Pool = require('pg').Pool; // PostgreSQL
+const Client = require('pg'); // PostgreSQL
 require("dotenv").config(); // for .env
 const PORT = process.env.PORT || 4002;
 
