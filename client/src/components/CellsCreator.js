@@ -10,7 +10,7 @@ export function CellsCreator (props) {
     const [backendData, setBackendData] = useState();
     const [rowsToDisplay, setRowsToDisplay] = useState();
     const [timeTrigger, setTimeTrigger] = useState(true); // timeTrigger is used for refreshing useEffect responsible for generating cells every one minute 
-    let minute = 3000;
+    let minute = 60000;
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -34,7 +34,8 @@ export function CellsCreator (props) {
 
     // Generating cells
     useEffect(() => {
-      if (!backendData) return; // If there is still no data - won't do that
+      if (!backendData) return; // Prevents an app crach when page is bing opened and there is no data yet
+
       let lastMonday = new Date(props.lastMon);
       let today = new Date();
       let currentTime = today.toLocaleTimeString();

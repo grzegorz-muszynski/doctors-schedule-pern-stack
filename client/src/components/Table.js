@@ -70,7 +70,7 @@ export const Table = () => {
 
         // A small delay below, because the previous data was visible for a split second making unpleasant flash
         setTimeout(function() {
-        document.getElementById('popUpBackground').style.display = 'flex';
+            document.getElementById('popUpBackground').style.display = 'flex';
         }, 100)
     }
 
@@ -90,7 +90,7 @@ export const Table = () => {
         }
         let postedData = inputsArray.concat(coordinates);
 
-        const response = await fetch(`${API_ENDPOINT}posting`, {
+        await fetch(`${API_ENDPOINT}posting`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ export const Table = () => {
         }
         let newData = inputsArray.concat(coordinates);
 
-        const response = await fetch(`${API_ENDPOINT}change`, {
+        await fetch(`${API_ENDPOINT}change`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -122,7 +122,7 @@ export const Table = () => {
         let dateId = coordinates[0];
         let timeId = coordinates[1];
 
-        const response = await fetch(`${API_ENDPOINT}day/${dateId}/time/${timeId}`, {
+        await fetch(`${API_ENDPOINT}day/${dateId}/time/${timeId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -137,15 +137,20 @@ export const Table = () => {
         let clickedBtn = document.activeElement.id;
 
         if (clickedBtn ==="submitBtn") {
-            submitHandler();
-            setPatientData({}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput
+            submitHandler().then(() => {
+                setTriggerRender(!triggerRender); // When the variable changes after each CRUD action, it triggers rerendering cells in CellsCreator
+            });
+            setPatientData({name: '', surname: '', phone: '', ssn: ''}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput
         } else if (clickedBtn ==="changeBtn") {
-            changeHandler();
+            changeHandler().then(() => {
+                setTriggerRender(!triggerRender);
+            });
         } else {
-            deleteHandler();
+            deleteHandler().then(() => {
+                setTriggerRender(!triggerRender);
+            });
         }
         closeForm();
-        setTriggerRender(!triggerRender); // When the variable changes after each CRUD action, it triggers rerendering cells in CellsCreator
     }
 
     return (
