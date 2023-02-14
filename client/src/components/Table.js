@@ -10,7 +10,7 @@ const API_ENDPOINT = "http://127.0.0.1:4002/";
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
     let [coordinates, setCoordinates] = useState({});
-    let [patientData, setPatientData] = useState({});
+    let [patientData, setPatientData] = useState({name: '', surname: '', phone: '', ssn: ''}); // Setting an initial value to fix "A component is changing an uncontrolled input to be controlled" issue
     let [triggerRender, setTriggerRender]= useState(false);
     let newSlotCoordinates;
 
