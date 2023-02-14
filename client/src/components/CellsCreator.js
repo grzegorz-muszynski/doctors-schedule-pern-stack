@@ -10,7 +10,7 @@ export function CellsCreator (props) {
     const [backendData, setBackendData] = useState();
     const [rowsToDisplay, setRowsToDisplay] = useState();
     const [timeTrigger, setTimeTrigger] = useState(true); // timeTrigger is used for refreshing useEffect responsible for generating cells every one minute 
-    let minute = 60000;
+    let minute = 3000;
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -102,7 +102,7 @@ export function CellsCreator (props) {
           allRows.push(row);
       });
       setRowsToDisplay(allRows);
-    }, [backendData, props.lastMon, timeTrigger]); // Will be invoked only while changing 
+    }, [backendData, props.lastMon, timeTrigger, props.triggerRender]); // Will be invoked only while changing 
 
     return (rowsToDisplay);
 }
