@@ -1,5 +1,7 @@
 ## Doctor's schedule with PERN stack
 Continuation of my Doctor's Schedule project. Main difference is completely different front-end part basing on React.js instead of vanilla JavaScript. Thinking about Heroku, PostgreSQL replaced SQLite. The application will be constantly enriched with new features.
+### Heroku
+LInk: https://doctors-schedule-pern-stack.herokuapp.com/
 ### Running app locally
 1. If you want to run an app locally, crucial things are having PostgreSQL managing tool and creating an .env file in the root directory where you should provide proper data like below, replacing triple x:
 ```
