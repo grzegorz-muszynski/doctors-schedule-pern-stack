@@ -7,13 +7,13 @@ const Pool = require('pg').Pool; // PostgreSQL
 require("dotenv").config(); // for .env
 const PORT = process.env.PORT || 4002;
 
-const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
-const proConfig = process.env.DATABASE_URL; // heroku addons
-
-const db = new Pool({
-    connectionString:
-        process.env.NODE_ENV === "production" ? proConfig : devConfig
+const db = new Client({
+    connectionString: process.env.DATABASE_URL, // Heroku addons
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
+db.connect;
 
 // Middleware
 app.use(cors());
