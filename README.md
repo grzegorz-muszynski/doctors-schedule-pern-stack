@@ -3,13 +3,24 @@ Continuation of my Doctor's Schedule project. Main difference is completely diff
 ### Heroku
 LInk: https://doctors-schedule-pern-stack.herokuapp.com/
 ### Running app locally
-1. If you want to run an app locally, crucial things are having PostgreSQL managing tool and creating an .env file in the root directory where you should provide proper data like below, replacing triple x:
+1. If you want to run an app locally, crucial things are having PostgreSQL managing tool and changing code in app.js file like below:
 ```
-PG_USER = xxx
-PG_PASSWORD = xxx
-PG_HOST = xxx
-PG_PORT = xxx
-PG_DATABASE = xxx
+const db = new Client({
+    connectionString: process.env.DATABASE_URL, // Heroku addons
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+```
+Replace the part of code above with the code below putting proper data instead of triple x.
+```
+const db = new Client({
+    host: xxx,
+    user: xxx,
+    port: xxx,
+    database: xxx,
+    password: xxx
+});
 ```
 2. In two front-end files, client\src\components\Table.js and client\src\components\CellsCreator.js, assign the API_ENDPOINTs like below:
 ```
