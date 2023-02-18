@@ -5,7 +5,7 @@ import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
-const API_ENDPOINT = "/";
+const API_ENDPOINT = "http://127.0.0.1:4002/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
@@ -160,7 +160,7 @@ export const Table = () => {
         <div id="navButtons">
             <Link to='/home' id='homeBtn'>Home</Link>
             <div className='separator'>|</div>
-            <div id='chooseBtn'>Change doctor</div>
+            <Link to='/home' id='chooseBtn'>Change doctor</Link>
         </div>
 
         <h1 id="title">Doctor's schedule</h1>
