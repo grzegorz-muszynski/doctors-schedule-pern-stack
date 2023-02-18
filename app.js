@@ -15,18 +15,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded in old version
 
 // Database
-// const db = new Client({
-//     connectionString: process.env.DATABASE_URL, // Heroku addons
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
 const db = new Client({
-    host: "localhost",
-    user: "postgres",
-    port: 5432,
-    database: "postgres",
-    password: "elephant46"
+    connectionString: process.env.DATABASE_URL, // Heroku addons
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 db.connect();
 
