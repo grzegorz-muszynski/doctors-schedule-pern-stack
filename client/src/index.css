@@ -74,7 +74,7 @@ body {
 
 .firstColumn  {
     border: 1px solid hsl(180, 57%, 34%);
-    border-right: 1px solid hsl(180, 57%, 34%);
+    /* border-right: 1px solid hsl(180, 57%, 34%); */
 }
 
 .timeSlot {
