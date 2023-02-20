@@ -26,7 +26,6 @@ body {
     height: 34px;
     margin: 0;
     padding: 0;
-    /* position: sticky; */
     position: fixed;
     z-index: 2;
 }
@@ -35,12 +34,8 @@ li {
     width: 200px;
     line-height: 14px;
     margin-top: 6px;
-    /* height: 14px; */
-    /* margin: auto; */
     display: inline-block;
     color: black;
-    /* margin: 0 auto; */
-    /* text-align: center; */
     vertical-align: middle;
 }
 
@@ -51,7 +46,7 @@ li {
     /* text-align: right;    */
     position: fixed;
     right: 0;
-    z-index: 1;
+    z-index: 2; /* should be same or bigger than z-index of navHome */
     width: 128px;
     padding: 0;
     margin: 3px 7px 0 0;
@@ -63,6 +58,7 @@ li {
     text-align: center;
     display: inline-block;
     margin: 0 2px;
+    color: black;
 }
 
 .linksHome {
@@ -81,10 +77,8 @@ li {
     padding: 0;
 }
 
-/* .linksHome:hover,
-.signInUpBtn:hover */
 .linksHome:hover,
-li:hover {
+#signInUp li:hover {
     color: hsl(180, 57%, 34%);
     cursor: pointer;
     cursor: hand;
@@ -102,8 +96,6 @@ li:hover {
     font-size: 21px;
     font-weight: 1000;
     padding: 10px;
-    /* background:hsl(0, 0%, 100%, 0.9); */
-
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -117,27 +109,49 @@ li:hover {
 }
 
 .textAndImgContainer{
-    width: 670px;
     height: 355px;
+    width: 715px;
     margin: 0 auto;
-    position: relative;
-    top: -33px;
+    display: flex; /* Crucial for keeping all child elements in proper way */
 }
 
-.smallPictures {
-    height: 280px;
-    width: 400px;
+.ImgAndTextContainer{
+    height: 355px;
+    width: 715px;
+    margin: 0 auto;
+    display: flex; /* Crucial for keeping all child elements in proper way */
+}
+
+.pictureFirst {
+    height: 320px;
+    width: 450px;
     display: inline-block;
+    position: relative;
+} 
+
+.pictureSecond {
+    height: 330px;
+    width: 450px;
+    display: inline-block;
+    position: relative;
+}
+
+.pictureThird {
+    height: 259px;
+    width: 310px;
+    display: inline-block;
+    position: relative;
 } 
 
 .textZone {
     /* padding-top: 20px; */
-    height: 220px;
-    width: 250px;
+    height: 355px;
+    width: 260px;
     margin-right: 15px;
+    margin-top: 9px;
     display: inline-block;
-    position: relative;
-    top: 70px;
+    /* position: relative; */
+    /* top: 70px; */
 }
 
 .smallTitle {
@@ -148,17 +162,61 @@ li:hover {
 }
 
 hr.rounded {
-    border-top: 3px solid hsl(180, 57%, 34%);
+    border-top: 3px solid hsl(180, 71%, 19%);
     margin: 5px 0;
     /* 13 */
     border-radius: 5px;
+}
+
+#separatorFirst {
     width: 180px;
 }
 
+#separatorThird {
+    width: 130px;
+}
+
 .smallText {
-    line-height: 18px; /* Without it font-size affects/pushes other blocks */ 
-    font-size: 16px;
+    /* line-height: 9px; Without it font-size affects/pushes other blocks  */
+    font-size: 14px;
     width: 250px;
     text-indent: 16px; /* the indentation of the first line */
     /* 96 */
+}
+
+.textZoneFirst {
+    margin-top: 8px;
+    margin-left: 30px;
+}
+
+.textZoneSecond {
+    margin-top: 80px;
+    margin-left: 20px;
+}
+
+.textZoneThird {
+    margin-top: 15px;
+    margin-left: 80px;
+    margin-right: 90px;
+}
+
+@media (max-width: 740px) {
+    .textAndImgContainer {
+        flex-direction: column;
+        width: 262px;
+    }
+    .ImgAndTextContainer {
+        flex-direction: column-reverse;
+        width: 262px;
+        margin-top: 160px;  
+    }
+    .pictureFirst,
+    .pictureSecond,
+    .pictureThird {
+        width: 260px;
+        margin: 0 auto;
+    }
+    .textZone {
+        margin: 0 auto;
+    }
 }
