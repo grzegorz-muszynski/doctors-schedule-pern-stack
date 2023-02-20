@@ -1,6 +1,164 @@
-h3 {
-    width: 450px;
-    margin: 0 auto;
-    padding-top: 40px;
+@font-face {
+    /* font-family: 'GothamMedium', sans-serif; */
+    /* font-family: 'GothamMedium'; */
+    /* src: url('../fonts/GothamMedium.ttf');  */
+}
+
+body {
+    cursor: url('../../public/images/cursor.png'), auto;
+    cursor: rotate 180;
+}
+
+#homeBackground {
+    width: 100%;
+    height: 860px;
+    object-fit: cover;
+}
+
+#navHome {
+    /* font-family: 'GothamMedium'; */
+    font-size: 16px;
+    font-weight: 1000;
+    letter-spacing: 0.05em;
+    background-color: hsl(180, 57%, 59%, 0.6);
     text-align: center;
+    width: 100%;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    /* position: sticky; */
+    position: fixed;
+    z-index: 2;
+}
+
+li {
+    width: 200px;
+    line-height: 14px;
+    margin-top: 6px;
+    /* height: 14px; */
+    /* margin: auto; */
+    display: inline-block;
+    color: black;
+    /* margin: 0 auto; */
+    /* text-align: center; */
+    vertical-align: middle;
+}
+
+#signInUp {
+    font-size: 16px;
+    font-weight: 1000;
+    letter-spacing: 0.05em;
+    /* text-align: right;    */
+    position: fixed;
+    right: 0;
+    z-index: 1;
+    width: 128px;
+    padding: 0;
+    margin: 3px 7px 0 0;
+}
+
+/* Sign in and Sign up buttons */
+#signInUp li {
+    width: 60px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.linksHome {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: color 0.5s;
+    -moz-transition:    color 0.5s;
+    -ms-transition:     color 0.5s;
+    -o-transition:      color 0.5s;
+    transition:         color 0.5s;
+}
+
+.signInUpBtn {
+    width: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+/* .linksHome:hover,
+.signInUpBtn:hover */
+.linksHome:hover,
+li:hover {
+    color: hsl(180, 57%, 34%);
+    cursor: pointer;
+    cursor: hand;
+}
+
+#greeting {
+    position: absolute;
+    z-index: 1;
+    width: 450px;
+    margin: 200px 0px 0px calc(50% - 225px);
+    /* top: -600px; */
+    /* padding-top: 40px; */
+    display: block;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 1000;
+    padding: 10px;
+    /* background:hsl(0, 0%, 100%, 0.9); */
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+#greeting h2 {
+    font-weight: 1000;
+}
+
+.textAndImgContainer{
+    width: 670px;
+    height: 355px;
+    margin: 0 auto;
+    position: relative;
+    top: -33px;
+}
+
+.smallPictures {
+    height: 280px;
+    width: 400px;
+    display: inline-block;
+} 
+
+.textZone {
+    /* padding-top: 20px; */
+    height: 220px;
+    width: 250px;
+    margin-right: 15px;
+    display: inline-block;
+    position: relative;
+    top: 70px;
+}
+
+.smallTitle {
+    /* line-height: 8px; */
+    /* height: 8px;  <24> */
+    font-weight: 1000;
+    width: 230px;
+}
+
+hr.rounded {
+    border-top: 3px solid hsl(180, 57%, 34%);
+    margin: 5px 0;
+    /* 13 */
+    border-radius: 5px;
+    width: 180px;
+}
+
+.smallText {
+    line-height: 18px; /* Without it font-size affects/pushes other blocks */ 
+    font-size: 16px;
+    width: 250px;
+    text-indent: 16px; /* the indentation of the first line */
+    /* 96 */
 }
