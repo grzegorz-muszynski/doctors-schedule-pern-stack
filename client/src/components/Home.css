@@ -43,11 +43,10 @@ li {
     font-size: 16px;
     font-weight: 1000;
     letter-spacing: 0.05em;
-    /* text-align: right;    */
     position: fixed;
     right: 0;
     z-index: 2; /* should be same or bigger than z-index of navHome */
-    width: 128px;
+    width: 144px;
     padding: 0;
     margin: 3px 7px 0 0;
 }
@@ -57,7 +56,7 @@ li {
     width: 60px;
     text-align: center;
     display: inline-block;
-    margin: 0 2px;
+    margin: 0 6px;
     color: black;
 }
 
@@ -84,13 +83,11 @@ li {
     cursor: hand;
 }
 
-#greeting {
+.greeting {
     position: absolute;
     z-index: 1;
     width: 450px;
     margin: 200px 0px 0px calc(50% - 225px);
-    /* top: -600px; */
-    /* padding-top: 40px; */
     display: block;
     text-align: center;
     font-size: 21px;
@@ -102,9 +99,10 @@ li {
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.5s;
 }
 
-#greeting h2 {
+.greeting h2 {
     font-weight: 1000;
 }
 
@@ -113,6 +111,22 @@ li {
     width: 340px;
     margin: 0 auto 5px;
     border-radius: 5px;
+}
+
+@media (max-width: 472px) {
+    .greeting {
+        width: 270px;
+        margin: 200px 0px 0px calc(50% - 135px);
+    }
+
+    #separatorMain {
+        width: 248px;
+    }
+}
+
+.hiddenGreeting {
+    opacity: 0;
+    filter: blur(5px);
 }
 
 .textAndImgContainer{
@@ -239,4 +253,44 @@ hr.rounded {
     opacity: 0;    
     filter: blur(5px);
     transform: translateX(-100%);
+}
+
+#menuBtn {
+    display: none;
+}
+
+
+/* Menu button replacing multiple nav buttons on narrower screens */
+@media (max-width: 740px) {
+    .linksHome,
+    #signInUp {
+        /* display: none; */
+    }
+
+    #menuBtn {
+        display: block;
+        position: absolute;
+        font-size: 16px;
+        font-weight: 1000;
+        letter-spacing: 0.05em;
+        z-index: 3;
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #menuBtn:hover {
+        color: hsl(180, 57%, 34%);
+        cursor: pointer;
+        cursor: hand;
+        -webkit-transition: color 0.5s;
+        -moz-transition:    color 0.5s;
+        -ms-transition:     color 0.5s;
+        -o-transition:      color 0.5s;
+        transition:         color 0.5s;
+    }
+
+    #allNavHome {
+        
+    }
 }
