@@ -223,3 +223,27 @@ hr.rounded {
         margin: 0 auto;
     }
 }
+
+.show {
+    opacity: 1;
+    /* filter: blur(0); */
+    /* transform: translateX(0); */
+    transition: all 2s;
+}
+
+.hiddenOnRight {
+    opacity: 0;    
+    filter: blur(5px);
+    transform: translateX(+100%);
+}
+
+.hiddenOnLeft {
+    opacity: 0;    
+    filter: blur(5px);
+    transform: translateX(-100%);
+}
+/* @media (prefers-reduced-motion) {
+    .hidden {
+      transition: none;
+    }
+  } */
