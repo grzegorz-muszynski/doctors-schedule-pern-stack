@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
 import './Home.css';
 
 // export function Home () {
@@ -7,6 +8,15 @@ import './Home.css';
 // }
 
 export function Home () {
+    const { ref: ref2, inView: isElementVisible2 } = useInView({
+        'threshold': 0,
+        'triggerOnce': true
+    });
+    const { ref: ref3, inView: isElementVisible3} = useInView({
+        'threshold': 0,
+        'triggerOnce': true
+    });
+
     return (
         <>
             <ul id='navHome' >
@@ -44,8 +54,8 @@ export function Home () {
                 <img src='../images/groupDoctors.jpg' className='pictureFirst' />
             </div>
 
-            <div className='ImgAndTextContainer'>
-                <img src='../images/workSave.jpg' className='pictureSecond' />
+            <div className={isElementVisible2 ? 'ImgAndTextContainer show' : 'ImgAndTextContainer hiddenOnRight'}>
+                <img src='../images/workSave.jpg' className={'pictureSecond'} ref={ref2} />
                 <div className='textZone textZoneSecond'>
                     <h5 className='smallTitle'>Work safely</h5>
                     <hr className="rounded" id='separatorSecond'></hr>
@@ -53,7 +63,7 @@ export function Home () {
                 </div>
             </div>
 
-            <div className='textAndImgContainer'>
+            <div className={isElementVisible3 ? 'textAndImgContainer show' : 'textAndImgContainer hiddenOnLeft'}  ref={ref3}>
                 <div className='textZone textZoneThird'>
                     <h5 className='smallTitle'>24/7 support</h5>
                     <hr className="rounded" id='separatorThird'></hr>
