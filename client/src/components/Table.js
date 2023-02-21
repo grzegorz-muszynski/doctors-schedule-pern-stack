@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import './Table.css';
 import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
