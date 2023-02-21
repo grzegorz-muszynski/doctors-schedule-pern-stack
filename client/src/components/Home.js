@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Home.css';
 
-// export function Home () {
-//     return <h3>There is nothing, yet 😌 This page was created in purpose of practising React Router. Please, be patient - I am gonna put here more features in coming days 😀</h3>;
-// }
-
 export function Home () {
+    // Variables for manipulating the 'greeting' element
+    const [showGreeting, setShowGreeting] = useState(true);
+    const controlGreeting = () => {
+        if (window.scrollY > 100) {
+            setShowGreeting(false);
+        } else {
+            setShowGreeting(true);
+        }
+    }
+    // Variables for manipulating two text and image containers
     const triggeringOnce = {
         'threshold': 0,
         'triggerOnce': true
@@ -15,21 +21,34 @@ export function Home () {
     const { ref: ref2, inView: isElementVisible2 } = useInView(triggeringOnce);
     const { ref: ref3, inView: isElementVisible3} = useInView(triggeringOnce);
 
+    // Mounting the event listener 
+    useEffect(() => {
+        window.addEventListener('scroll', controlGreeting);
+        return () => {
+            window.removeEventListener('scroll', controlGreeting);
+        }
+    }, []);
+
     return (
         <>
-            <ul id='navHome' >
-                <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
-                <li><Link className='linksHome'>See list of doctors</Link></li>
-            </ul>
-            <ul id='signInUp' >
-                {/* <li><div className='signInUpBtn'>Sign in</div></li>
-                <li><div className='signInUpBtn'>Sign up</div></li> */}
-                <li>Sign in</li>
-                <li>Sign up</li>
-            </ul>
-            <div id='greeting'><h2>The program for a clinic</h2>
-            <hr id='separatorMain'></hr>
-            Welcome to Doctor's schedule - your handy tool for managing doctor's calendar. Log patients visits, custom your own list of doctors and watch how easier your clinic can be run.</div>
+            <div id='menuBtn'>Menu</div>
+
+            <div id='allNavHome'>
+                <ul id='navHome' >
+                    <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
+                    <li><Link className='linksHome'>See list of doctors</Link></li>
+                </ul>
+                <ul id='signInUp' >
+                    <li>Sign in</li>
+                    <li>Sign up</li>
+                </ul>
+            </div>
+
+            <div className={showGreeting ?  'greeting' : 'greeting hiddenGreeting'}>
+                <h2>The program for a clinic</h2>
+                <hr id='separatorMain'></hr>
+                Welcome to Doctor's schedule - your handy tool for managing doctor's calendar. Log patients visits, custom your own list of doctors and watch how easier your clinic can be run.
+            </div>
             <img src='../images/reception4.jpg' id='homeBackground' alt="home backgroundwallpaper" />
 
             <div className='textAndImgContainer'>
