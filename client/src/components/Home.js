@@ -8,14 +8,12 @@ import './Home.css';
 // }
 
 export function Home () {
-    const { ref: ref2, inView: isElementVisible2 } = useInView({
+    const triggeringOnce = {
         'threshold': 0,
         'triggerOnce': true
-    });
-    const { ref: ref3, inView: isElementVisible3} = useInView({
-        'threshold': 0,
-        'triggerOnce': true
-    });
+    }
+    const { ref: ref2, inView: isElementVisible2 } = useInView(triggeringOnce);
+    const { ref: ref3, inView: isElementVisible3} = useInView(triggeringOnce);
 
     return (
         <>

@@ -226,9 +226,7 @@ hr.rounded {
 
 .show {
     opacity: 1;
-    /* filter: blur(0); */
-    /* transform: translateX(0); */
-    transition: all 2s;
+    transition: all 1.5s;
 }
 
 .hiddenOnRight {
@@ -242,8 +240,3 @@ hr.rounded {
     filter: blur(5px);
     transform: translateX(-100%);
 }
-/* @media (prefers-reduced-motion) {
-    .hidden {
-      transition: none;
-    }
-  } */
