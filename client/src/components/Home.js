@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Home.css';
+import { stylesHome } from './Home.styles';
 
 export function Home () {
+    // Variables initialized for manipulating responsive navbar on narrower screens 
+    const [menuBtnClicked, setMenuBtnClicked] = useState(false);
     // Variables for manipulating the 'greeting' element
     const [showGreeting, setShowGreeting] = useState(true);
     const controlGreeting = () => {
@@ -21,7 +24,7 @@ export function Home () {
     const { ref: ref2, inView: isElementVisible2 } = useInView(triggeringOnce);
     const { ref: ref3, inView: isElementVisible3} = useInView(triggeringOnce);
 
-    // Mounting the event listener 
+    // Mounting the event listener
     useEffect(() => {
         window.addEventListener('scroll', controlGreeting);
         return () => {
@@ -29,18 +32,28 @@ export function Home () {
         }
     }, []);
 
+    function hideShowNavbar() {
+        setMenuBtnClicked(!menuBtnClicked);
+        // console.log(menuBtnClicked);
+        console.log(menuBtnClicked + ' if both true - you should see Sign up button ' + window.innerWidth);
+    }
+
     return (
         <>
-            <div id='menuBtn'>Menu</div>
+            <div id='menuBtn' onClick={hideShowNavbar}>Menu</div>
 
             <div id='allNavHome'>
-                <ul id='navHome' >
-                    <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
-                    <li><Link className='linksHome'>See list of doctors</Link></li>
+                <ul id={menuBtnClicked ? 'navHomeUnwrapped' : 'navHome'}>
+                    <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome' to='/'>Check Schedule</Link></li>
+                    <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome'>See list of doctors</Link></li>
                 </ul>
-                <ul id='signInUp' >
+                <ul id='signInUp'>
+                    {/* <li style={!menuBtnClicked && stylesHome.hideLi}>Sign in</li> */}
+                    {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}>Sign in</li> */}
+                    {/* <li style={stylesHome.hideLi}>Sign in</li> */}
                     <li>Sign in</li>
-                    <li>Sign up</li>
+                    <li style={(!menuBtnClicked && (window.innerWidth < 740)) ? stylesHome.hideLi : {}}>Sign up</li>
+                    {/* <li style={(!menuBtnClicked && window.innerWidth < 740) ? stylesHome.hideLi : {}}>Sign up</li> */}
                 </ul>
             </div>
 
