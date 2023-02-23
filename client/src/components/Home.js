@@ -40,20 +40,18 @@ export function Home () {
 
     return (
         <>
-            <div id='menuBtn' onClick={hideShowNavbar}>Menu</div>
+            <div class={menuBtnClicked ? 'menuBtn menuBtnClicked' : 'menuBtn'} onClick={hideShowNavbar}>Menu</div>
 
             <div id='allNavHome'>
                 <ul id={menuBtnClicked ? 'navHomeUnwrapped' : 'navHome'}>
-                    <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome' to='/'>Check Schedule</Link></li>
-                    <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome'>See list of doctors</Link></li>
+                    {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome' to='/'>Check Schedule</Link></li> */}
+                    <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
+                    <li><Link className='linksHome'>See list of doctors</Link></li>
+                    {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome'>See list of doctors</Link></li> */}
                 </ul>
-                <ul id='signInUp'>
-                    {/* <li style={!menuBtnClicked && stylesHome.hideLi}>Sign in</li> */}
-                    {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}>Sign in</li> */}
-                    {/* <li style={stylesHome.hideLi}>Sign in</li> */}
-                    {/* <li>Sign in</li> */}
-                    <li style={(!menuBtnClicked && (window.innerWidth < 740)) ? stylesHome.hideLi : {}}>Sign up</li>
-                    {/* <li style={(!menuBtnClicked && window.innerWidth < 740) ? stylesHome.hideLi : {}}>Sign up</li> */}
+                <ul className={menuBtnClicked ? 'signInUp signInUpunWrapped' : 'signInUp'}>
+                    <li>Sign in</li>
+                    <li>Sign up</li>
                 </ul>
             </div>
 
