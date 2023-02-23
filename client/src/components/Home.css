@@ -40,7 +40,7 @@ li {
     vertical-align: middle;
 }
 
-#signInUp {
+.signInUp {
     font-size: 16px;
     font-weight: 1000;
     letter-spacing: 0.05em;
@@ -53,7 +53,7 @@ li {
 }
 
 /* Sign in and Sign up buttons */
-#signInUp li {
+.signInUp li {
     width: 60px;
     text-align: center;
     display: inline-block;
@@ -78,7 +78,7 @@ li {
 }
 
 .linksHome:hover,
-#signInUp li:hover {
+.signInUp li:hover {
     color: hsl(180, 57%, 34%);
     cursor: pointer;
     cursor: hand;
@@ -256,17 +256,14 @@ hr.rounded {
     transform: translateX(-100%);
 }
 
-#menuBtn {
+.menuBtn {
     display: none;
 }
 
-
 /* Menu button replacing multiple nav buttons on narrower screens */
 @media (max-width: 740px) {
-    #menuBtn {
-        /* display: none;  */
+    .menuBtn {
         display: block;
-        /* position: absolute; */
         position: fixed;
         font-size: 16px;
         font-weight: 1000;
@@ -276,7 +273,8 @@ hr.rounded {
         width: 100%;
         text-align: center;
     }
-    #menuBtn:hover {
+
+    .menuBtn:hover {
         color: hsl(180, 57%, 34%);
         cursor: pointer;
         cursor: hand;
@@ -287,13 +285,16 @@ hr.rounded {
         transition:         color 0.5s;
     }
 
+    .menuBtnClicked:hover {
+        color: hsl(180, 57%, 34%);
+    }
+
     #allNavHome {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    #navHomeUnwrapped { /*  navHome id should be replaced by this */
-        /* display: none; */
+    #navHomeUnwrapped {
         font-size: 16px;
         font-weight: 1000;
         letter-spacing: 0.05em;
@@ -305,23 +306,30 @@ hr.rounded {
         position: fixed;
         z-index: 2;
 
+        
         height: 130px;
         padding-top: 25px;
     }
 
-    #signInUp {
+    .signInUp {
         width: 100%;
         flex-direction: column;
         margin-top: 76px;
     } 
 
-    #signInUp li,
-    #navHome li,
+    /* nav buttons style when menu wrapped */
+    .signInUp li,
+    #navHome li{
+        width: 100%;
+        text-align: center;
+        display: none; 
+    } 
+
+    /* nav buttons style when menu unwrapped */
+    .signInUpunWrapped li,
     #navHomeUnwrapped li {
         width: 100%;
         text-align: center;
-        /* should be shown after Menu click */
-        /* display: none;  */
+        display: inline-block; /* shown after Menu click */
     } 
-
 }
