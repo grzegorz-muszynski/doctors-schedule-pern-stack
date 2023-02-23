@@ -51,7 +51,7 @@ export function Home () {
                     {/* <li style={!menuBtnClicked && stylesHome.hideLi}>Sign in</li> */}
                     {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}>Sign in</li> */}
                     {/* <li style={stylesHome.hideLi}>Sign in</li> */}
-                    <li>Sign in</li>
+                    {/* <li>Sign in</li> */}
                     <li style={(!menuBtnClicked && (window.innerWidth < 740)) ? stylesHome.hideLi : {}}>Sign up</li>
                     {/* <li style={(!menuBtnClicked && window.innerWidth < 740) ? stylesHome.hideLi : {}}>Sign up</li> */}
                 </ul>
