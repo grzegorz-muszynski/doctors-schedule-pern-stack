@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Home.css';
-import { stylesHome } from './Home.styles';
 
 export function Home () {
     // Variables initialized for manipulating responsive navbar on narrower screens 
@@ -34,8 +33,10 @@ export function Home () {
 
     function hideShowNavbar() {
         setMenuBtnClicked(!menuBtnClicked);
-        // console.log(menuBtnClicked);
-        console.log(menuBtnClicked + ' if both true - you should see Sign up button ' + window.innerWidth);
+    }
+
+    function notFinished () {
+        alert(`That feature isn't completed yet. In the meantime, you can check two pages which are already available - the current one and the page with a table (the hyperlink in "Check Schedule" button).`);
     }
 
     return (
@@ -44,14 +45,12 @@ export function Home () {
 
             <div id='allNavHome'>
                 <ul id={menuBtnClicked ? 'navHomeUnwrapped' : 'navHome'}>
-                    {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome' to='/'>Check Schedule</Link></li> */}
                     <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
-                    <li><Link className='linksHome'>See list of doctors</Link></li>
-                    {/* <li style={!menuBtnClicked ? stylesHome.hideLi : {}}><Link className='linksHome'>See list of doctors</Link></li> */}
+                    <li onClick={notFinished}><Link className='linksHome'>See list of doctors</Link></li>
                 </ul>
                 <ul className={menuBtnClicked ? 'signInUp signInUpunWrapped' : 'signInUp'}>
-                    <li>Sign in</li>
-                    <li>Sign up</li>
+                    <li onClick={notFinished}>Sign in</li>
+                    <li onClick={notFinished}>Sign up</li>
                 </ul>
             </div>
 
