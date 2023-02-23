@@ -25,6 +25,10 @@ export const Table = () => {
         setCurrentWeekMonday(mondayDate);
     }, []); // While first rendering, there is set a last monday counting from a day we are opening the program
 
+    function notFinished () {
+        alert(`That feature isn't completed yet. In the meantime, you can check two pages which are already available - the current one and the home page (the hyperlink in "Home" button).`);
+    }
+
     // Event handlers changing monday dates for a next week... 
     function rightArrowHandler() {
         // let nextWeekMonday = currentWeekMonday;
@@ -141,7 +145,7 @@ export const Table = () => {
             submitHandler().then(() => {
                 setTriggerRender(!triggerRender); // When the variable changes after each CRUD action, it triggers rerendering cells in CellsCreator
             });
-            setPatientData({}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput. It's imortant to set patient data NOT with value: {name: '', surname: '', phone: '', ssn: ''} - then it would be the same like a vlue of empty slot, React wouldn't see any changes and inputs in the pop up form wouldn't be updated.
+            setPatientData({}); // When sb chooses a slot for booking, patientData for all inputs is equal to empty string. When we type in inputs, inputValue is modified in RowInput component's state so patientData is still the same. This leads to bug when after submit, and choosing an empty slot we still see a data submitted before. To avoid this, after each submitHandler(), the patiendData is changed to trigger useEffect in RowInput. It's important to set patient data NOT with value: {name: '', surname: '', phone: '', ssn: ''} - then it would be the same like a value of empty slot, React wouldn't see any changes and inputs in the pop up form wouldn't be updated.
         } else if (clickedBtn ==="changeBtn") {
             changeHandler().then(() => {
                 setTriggerRender(!triggerRender);
@@ -161,7 +165,7 @@ export const Table = () => {
         <div id="navButtons">
             <Link to='/home' id='homeBtn'>Home</Link>
             <div className='separator'>|</div>
-            <Link to='/home' id='chooseBtn'>Change doctor</Link>
+            <Link id='chooseBtn' onClick={notFinished}>Change doctor</Link>
         </div>
 
         <h1 id="title">Doctor's schedule</h1>
