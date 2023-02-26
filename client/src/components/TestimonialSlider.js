@@ -6,6 +6,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Testimonial from './Testimonial';
 import './Testimonial.css';
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 export const TestimonialSlider = () => {
   
     const testimonials = [
