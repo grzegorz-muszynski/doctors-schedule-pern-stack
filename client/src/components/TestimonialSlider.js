@@ -11,35 +11,35 @@ export const TestimonialSlider = () => {
     const testimonials = [
         {
             name: 'Gregory House',
-            description: '11111111111111111111',
+            description: "It's a brilliant, very intuitive, effective tool and big improvement for my hospital.",
             address: 'USA',
-            img: '../../public/images/harold.jpg'
+            img: '../images/drHouse.jpg'
         },
         {
-            name: 'Dr Strange',
-            description: '2222222222222222222',
+            name: 'Dr. Dre',
+            description: "Actually, I ain't medicine doctor but my homies working in hospitals claim this app is kinda cool stuff.",
             address: 'USA',
-            img: '../../public/images/harold.jpg'
+            img: '../images/drDre.jpg'
         },
         {
-            name: 'John Dolittle',
-            description: '3333333333333333333333',
+            name: 'Dr. Harold',
+            description: "It's the best program for clinics. Please, trust me.",
+            address: 'Hungary',
+            img: './images/harold.jpg'
+        },        
+        {
+            name: 'Dr. John Dolittle',
+            description: "No matter you manage big hospital, physiotherapy center or veterinary clinic - it's the app for you.",
             address: 'UK',
-            img: '../../public/images/harold.jpg'
-        },
-        {
-            name: '',
-            description: '444444444444444444444444444444',
-            address: 'PL',
-            img: '../../public/images/harold.jpg'
-        },
+            img: '../images/drDolittle.jpg'
+        }
     ]
 
     // Owl carousel Settings
     const options = {
         loop: true,
         center: true,
-        items: 3,
+        items: 4,
         margin: 0,
         autoplay: true,
         dots: true,

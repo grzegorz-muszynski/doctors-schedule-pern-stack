@@ -42,7 +42,7 @@ export function Home () {
 
     return (
         <>
-            <div class={menuBtnClicked ? 'menuBtn menuBtnClicked' : 'menuBtn'} onClick={hideShowNavbar}>Menu</div>
+            <div className={menuBtnClicked ? 'menuBtn menuBtnClicked' : 'menuBtn'} onClick={hideShowNavbar}>Menu</div>
 
             <div id='allNavHome'>
                 <ul id={menuBtnClicked ? 'navHomeUnwrapped' : 'navHome'}>
