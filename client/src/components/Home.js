@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Home.css';
+import { TestimonialSlider } from './TestimonialSlider';
 
 export function Home () {
     // Variables initialized for manipulating responsive navbar on narrower screens 
@@ -100,6 +101,8 @@ export function Home () {
                 </div>
                 <img src='../images/support.jpg' className='pictureThird' />
             </div>
+
+            <TestimonialSlider/>
         </>
     )
 }
