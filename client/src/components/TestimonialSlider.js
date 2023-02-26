@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import Testimonial from './Testimonial';
+import React from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import userPic from '../images/haroldUser.jpg';
-import './Testimonial.css'
+
+import Testimonial from './Testimonial';
+import './Testimonial.css';
 
 export const TestimonialSlider = () => {
   
     const testimonials = [
-        {
-            name: 'Gregory House',
+        {   
+            key: 'testimonial-1',
+            name: 'Dr. Gregory House',
             description: "It's a brilliant, very intuitive, effective tool and big improvement for my hospital.",
             address: 'USA',
             img: '../images/drHouse.jpg'
         },
-        {
+        {   
+            key: 'testimonial-2',
+            name: 'Dr. Harold',
+            description: "You can trust me. It's the best program for clinics.",
+            address: 'Hungary',
+            img: './images/harold2.jpg'
+        },
+        {   
+            key: 'testimonial-3',
             name: 'Dr. Dre',
             description: "Actually, I ain't medicine doctor but my homies working in hospitals claim this app is kinda cool stuff.",
             address: 'USA',
             img: '../images/drDre.jpg'
         },
-        {
-            name: 'Dr. Harold',
-            description: "It's the best program for clinics. Please, trust me.",
-            address: 'Hungary',
-            img: './images/harold.jpg'
-        },        
-        {
+        {   
+            key: 'testimonial-4',
             name: 'Dr. John Dolittle',
             description: "No matter you manage big hospital, physiotherapy center or veterinary clinic - it's the app for you.",
             address: 'UK',
@@ -39,7 +43,7 @@ export const TestimonialSlider = () => {
     const options = {
         loop: true,
         center: true,
-        items: 4,
+        items: 3,
         margin: 0,
         autoplay: true,
         dots: true,
@@ -51,7 +55,7 @@ export const TestimonialSlider = () => {
                 items: 1
             },
             600: {
-                items: 3
+                items: 2
             },
             1000: {
                 items: 3
@@ -62,34 +66,21 @@ export const TestimonialSlider = () => {
     return (
         <section id="testimonial" className="testimonials pt-70 pb-70">
             <div className="container mt-5">
-                <h4 className="miniTitle text-center">TESTIMONIALS</h4>
                 <div className="text-center ">
-                    <h3 className="sectionTitle">What Our Clients are Saying?</h3>
+                    <h3 className="sectionTitle">Our references</h3>
                 </div>
-                <p className="text-center ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <p className="text-center">The program has been trusted by many specialists. Try you too!</p>
+                <hr id='separatorReferences'></hr>
+
                 <div className="row">
                     <div className="col-md-12">
-                        <OwlCarousel id="customer-testimonoals" className="owl-carousel owl-theme" {...options}>
+                        <OwlCarousel id="customer-testimonials" className="owl-carousel owl-theme" {...options}>
                             {
-                                testimonials.length === 0 
-                                    ?
-                                        <div class="item">
-                                            <div class="shadow-effect">
-                                                <img class="img-circle" src={userPic} />
-
-                                                <p>555555555555555555555555555555555</p>
-                                            </div>
-                                            <div class="testimonial-name">
-                                                <h5>Dr Random</h5>
-                                                <small>Poland</small>
-                                            </div>
-                                        </div> 
-                                    :
-                                        testimonials.map(testimonialDetail => {
-                                            return (
-                                                <Testimonial testimonialDetail={testimonialDetail} key={testimonialDetail._key} />
-                                            )
-                                        })
+                                testimonials.map(testimonialDetail => {
+                                    return (
+                                        <Testimonial testimonialDetail={testimonialDetail} key={testimonialDetail.key} />
+                                    )
+                                })
                             }
                         </OwlCarousel>
                     </div>
