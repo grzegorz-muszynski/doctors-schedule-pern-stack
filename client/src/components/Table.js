@@ -168,7 +168,7 @@ export const Table = () => {
             <Link id='chooseBtn' onClick={notFinished}>Change doctor</Link>
         </div>
 
-        <h1 id="title">Doctor's schedule</h1>
+        <h2 id="title">Doctor's schedule</h2>
 
         <img className="arrows" id="leftArrow" src="./images/arrowBtn.png" alt="leftArrow" onClick={leftArrowHandler} />
         <img className="arrows" id="rightArrow" src="./images/arrowBtn.png" alt="rightArrow" onClick={rightArrowHandler} />
