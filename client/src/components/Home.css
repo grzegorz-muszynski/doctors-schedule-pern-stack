@@ -1,6 +1,6 @@
 body {
-    cursor: url('../../public/images/cursor.png'), auto;
-    cursor: rotate 180;
+    /* cursor: url('../../public/images/cursor.png'), auto;
+    cursor: rotate 180; */
 }
 
 #homeBackground {
@@ -174,21 +174,21 @@ li {
 }
 
 hr.rounded {
-    border-top: 3px solid hsl(180, 71%, 19%);
+    border-top: 3px solid hsl(177, 100%, 35%);
     margin: 5px 0;
     border-radius: 5px;
 }
 
 #separatorFirst {
-    width: 180px;
+    width: 178px;
 }
 
 #separatorSecond {
-    width: 110px;
+    width: 105px;
 }
 
 #separatorThird {
-    width: 130px;
+    width: 116px;
 }
 
 .smallText {

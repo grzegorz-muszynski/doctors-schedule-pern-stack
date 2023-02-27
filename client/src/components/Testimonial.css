@@ -9,43 +9,43 @@
 }
 
 #separatorReferences {
-  border-top: 5px solid hsl(177, 100%, 29%);
+  border-top: 5px solid hsl(177, 100%, 35%);
   width: 555px;
   margin: 0 auto 5px;
   border-radius: 5px;
 }
 
-.shadow-effect {
+.testimonial-description {
     background: #fff;
-    padding: 20px;
+    padding: 19px;
     border-radius: 4px;
     text-align: center;
     border: 1px solid #ECECEC;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.02);
+    box-shadow: 10px 15px 15px 5px rgba(0,0,0,0.2);
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
   }
 
-  #shadow-effect p {
-    font-family: inherit;
-    font-size: 17px;
+  .testimonial-description p {
+    font-size: 19px;
     line-height: 1.5;
-    margin: 0 0 17px 0;
-    font-weight: 300;
+    /* font-weight: 600; */
+    /* font-style: italic; */
   }
 
-  .img-circle {
+  .imgCircle {
     border-radius: 50%;
     vertical-align: middle;
-    max-width: 90px;
-    min-height: 90px;
+    max-width: 100px;
+    min-height: 100px;
     transform-style: preserve-3d;
-    margin: 0 auto 17px;
+    margin: 0 auto 19px;
   }
 
-  #customer-testimonials {
-    margin-top: 6%;
-  }
+  /* #customer-testimonials {
+    margin-top: 20px;
+  } */
 
-  .testimonial-name {
+  .testimonialName {
     margin: -17px auto 0;
     display: table;
     width: auto;
@@ -74,23 +74,27 @@
   }
 
   .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-    background: #56423D;
+    /* background: hsl(177, 100%, 35%); */
+    background: hsl(177, 50%, 65%);
     transform: translate3d(0px, -50%, 0px) scale(0.8);
   }
 
-  .owl-carousel .owl-dots {
+  /* .owl-carousel  */
+    .owl-theme .owl-dots {
     display: inline-block;
     width: 100%;
     text-align: center;
   }
 
-  .owl-carousel .owl-dots .owl-dot{ 
+  /* .owl-carousel  */
+    .owl-theme .owl-dots .owl-dot { 
     display: inline-block;
   }
 
-  .owl-carousel .owl-dots .owl-dot span{ 
-    /* background: #eaa400; */
-    background: #56423D;
+  /* .owl-carousel  */
+    .owl-theme .owl-dots .owl-dot span { 
+    background: hsl(177, 50%, 65%);
+    /* background: hsl(177, 100%, 35%); */
     display: inline-block;
     height: 20px;
     width: 20px;

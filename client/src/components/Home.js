@@ -60,7 +60,7 @@ export function Home () {
                 <hr id='separatorMain'></hr>
                 Welcome to Doctor's schedule - your handy tool for managing doctor's calendar. Log patients visits, custom your own list of doctors and watch how easier your clinic can be run.
             </div>
-            <img src='../images/reception4.jpg' id='homeBackground' alt="home backgroundwallpaper" />
+            <img src='../images/reception2.jpg' id='homeBackground' alt="home backgroundwallpaper" />
 
             <div className='textAndImgContainer'>
                 <div className='textZone textZoneFirst'>

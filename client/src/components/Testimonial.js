@@ -5,11 +5,11 @@ const Testimonial = ({testimonialDetail}) => {
 
     return (
         <div className="item">
-            <div className="shadow-effect">
-                <img className="img-circle" src={img} />
+            <div className="testimonial-description">
+                <img className="imgCircle" src={img} />
                 <p>{description}</p>
             </div>
-            <div className="testimonial-name">
+            <div className="testimonialName">
                 <h5>{name}</h5>
                 <small>{address}</small>
             </div>
