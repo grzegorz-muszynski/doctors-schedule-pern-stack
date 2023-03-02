@@ -6,7 +6,7 @@ import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
-const API_ENDPOINT = "http://127.0.0.1:4002/";
+const API_ENDPOINT = "/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
@@ -135,7 +135,7 @@ export const Table = () => {
         });
     }
 
-        // The event handler for posting, changing and deleting data via pop up form
+    // The event handler for posting, changing and deleting data via pop up form
     const submitting = (e) => {
         e.preventDefault();
 

@@ -6,14 +6,13 @@
 
 body {
     color: black;
-    /* font-family:  'Roboto', 'Arial', sans-serif; */
     font-family:  'Roboto', 'Arial', sans-serif;
     font-size: 20px;
     font-weight: 550;
 }
 
 #title {
-    font-weight: 800;
+    font-weight: 1000;
     text-transform: uppercase;
     text-align: center;
     margin-top: 5px;
@@ -81,7 +80,6 @@ body {
 
     .separator {
         font-size: 20px; 
-        /* font-weight: 600; */
         top: -2px;
     }
 
@@ -199,7 +197,6 @@ body {
 #popUpBackground {
     width: 100%;
     height: 100%;
-    /* background-color: rgba(169, 194, 195, 0.4); */
     position: fixed;
     top: 0;
     display: none;
@@ -211,20 +208,20 @@ body {
     margin-top: 15px;
     margin-left: calc((450px - 300px)/2);
     font-size: 30px;
+    font-weight: 600;
 }
 
 #popUp {
     width: 450px;
     height: 300px;
     margin: 280px auto;
-    /* background-color: #b7b7b7; */
     /* Glass effect */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.57);
 }
 
 #popUpForm {
@@ -259,20 +256,32 @@ body {
 .buttons {
     display: inline-block;
     border-radius: 8px;
-    border: 1px solid grey;
+    border: 0px;
 }
 
 #submitBtn {
-    background-color: #3da219;
+    /* background-color: hsl(104, 73%, 37%); */
+    background: linear-gradient(100deg, hsl(103, 73%, 30%),hsl(95, 83%, 38%));
 }
 
 #changeBtn {
-    background-color: #A9A9A9;
+    /* background-color: hsl(39, 100%, 46%); */
+    /* background: linear-gradient(100deg, hsl(39, 85%, 33%), hsl(31, 100%, 55%)); */
+    background: linear-gradient(100deg, hsl(31, 100%, 35%), hsl(31, 100%, 55%));
     margin: 0 7px;
 }
 
 #deleteBtn {
-    background-color: #A9A9A9;
+    /* background-color: hsl(2, 80%, 47%); */
+    /* background: linear-gradient(100deg, hsl(0, 73%, 33%), hsl(1, 100%, 49%)); */
+    background: linear-gradient(100deg, hsl(1, 90%, 32%), hsl(1, 90%, 59%));
+}
+
+    /* overriding button's IDs by class */
+.buttonsDisabled {
+    /* background-color: hsl(0, 0%, 70%) !important; */
+    /* background: hsl(0, 0%, 70%) !important; */
+    background: linear-gradient(100deg, hsl(0, 0%, 60%), hsl(0, 0%, 80%)) !important;
 }
 
     /* Arrows */

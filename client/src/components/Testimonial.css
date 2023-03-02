@@ -50,7 +50,7 @@
     display: table;
     width: auto;
     /* background: linear-gradient(100deg, #845EC2, #BE93FD); */
-    background: linear-gradient(100deg, #FF8066, #FF918D);
+    background: linear-gradient(100deg, hsl(10, 100%, 70%), hsl(2, 100%, 78%));
     /* background: linear-gradient(135deg, #ff3e00, #eaa400); */
     padding: 9px 35px;
     border-radius: 12px;

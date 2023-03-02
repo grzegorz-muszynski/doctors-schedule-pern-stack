@@ -24,7 +24,7 @@ export function PopUpForm(props) {
                 patientData={props.patientData.phone} />
                 <RowInput htmlFor="ssn" description="Social Security number:" type="text" id="ssn" name="SocialSecurityNumber" patientData={props.patientData.ssn} />
   
-                {/* If there is no data in slot to modify, the submit button will be avaiable and the rest will be disabled (change and delete buttons), otherwise buttons are set in way allowing for modification of patient's data */}
+                {/* If there is no data in a slot to modify, the submit button will be available and the rest will be disabled (change and delete buttons), otherwise buttons are set in way allowing for modification of patient's data */}
                 <div id="btnContainer">
                     <PopUpFormButtons id="submitBtn" description="Submit" isDisabled={!props.patientData.name ? false : true} />
                     <PopUpFormButtons id="changeBtn" description="Change" isDisabled={!props.patientData.name ? true : false} />
