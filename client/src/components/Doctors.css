@@ -1,0 +1,28 @@
+.container {
+    width: 840px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.container th {
+    border-bottom: 1px solid black;
+}
+
+.container tr td {
+    border-bottom: 1px solid black;
+}
+
+.patientsListHeaders {
+    width: 840px;
+}
+
+.patientsListHeaders th {
+    width: 120px;
+}
+
+.phoneCell,
+.ssnCell,
+.dateCell,
+.timeCell {
+    text-align: right;
+}

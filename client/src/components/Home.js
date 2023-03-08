@@ -47,7 +47,7 @@ export function Home () {
             <div id='allNavHome'>
                 <ul id={menuBtnClicked ? 'navHomeUnwrapped' : 'navHome'}>
                     <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
-                    <li onClick={notFinished}><Link className='linksHome'>See list of doctors</Link></li>
+                    <li><Link className='linksHome' to='Doctors'>See list of doctors</Link></li>
                 </ul>
                 <ul className={menuBtnClicked ? 'signInUp signInUpunWrapped' : 'signInUp'}>
                     <li onClick={notFinished}>Sign in</li>

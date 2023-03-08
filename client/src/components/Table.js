@@ -6,7 +6,7 @@ import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
-const API_ENDPOINT = "/";
+const API_ENDPOINT = "http://127.0.0.1:4002/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
@@ -68,8 +68,8 @@ export const Table = () => {
 
         newSlotCoordinates = e.target.dataset.coordinates.split(",");
         newSlotCoordinates = [
-        newSlotCoordinates[0],
-        newSlotCoordinates[1],
+            newSlotCoordinates[0],
+            newSlotCoordinates[1],
         ]
         setCoordinates(newSlotCoordinates);
 
