@@ -29,7 +29,7 @@ export function Visits() {
         let comparableString = dateString;
         if (dateString.length === 9) comparableString = '0' + dateString;
         comparableString = comparableString.split(".").reverse().join("");
-        // console.log('foo3 ', comparableString);
+
         return comparableString;
     }
 
@@ -44,9 +44,6 @@ export function Visits() {
     }
 
     function mergeSortSplitting(arrayToSort) {
-
-        // console.log('foo2 ' + determinant);
-
         if (arrayToSort.length <= 1) return arrayToSort;
 
         const middle = Math.floor(arrayToSort.length / 2);
@@ -112,7 +109,6 @@ export function Visits() {
         console.log('foo1 ' + typeof e.target.dataset.determinant);
         setDeterminant(e.target.dataset.determinant)     
     }
-
 
     // displays list of patients
     function displayPatientsList(listForDisplaying) {
