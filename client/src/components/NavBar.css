@@ -1,0 +1,137 @@
+#navHome,
+#navHomeUnwrapped {
+    font-size: 16px;
+    font-weight: 1000;
+    letter-spacing: 0.05em;
+    background-color: hsl(180, 67%, 64%);
+    text-align: center;
+    width: 100%;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 2;
+
+    transition: background-color 1s;
+}
+
+li {
+    width: 200px;
+    line-height: 14px;
+    margin-top: 6px;
+    display: inline-block;
+    color: black;
+    vertical-align: middle;
+}
+
+.signInUp {
+    font-size: 16px;
+    font-weight: 1000;
+    letter-spacing: 0.05em;
+    position: fixed;
+    right: 0;
+    z-index: 2; /* should be same or bigger than z-index of navHome */
+    width: 144px;
+    padding: 0;
+    margin: 3px 7px 0 0;
+}
+
+/* Sign in and Sign up buttons */
+.signInUp li {
+    width: 60px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 6px;
+    color: black;
+}
+
+.linksHome {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: color 0.5s;
+    -moz-transition:    color 0.5s;
+    -ms-transition:     color 0.5s;
+    -o-transition:      color 0.5s;
+    transition:         color 0.5s;
+}
+
+.signInUpBtn {
+    width: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+.linksHome:hover,
+.signInUp li:hover {
+    color: hsl(180, 57%, 34%);
+    cursor: pointer;
+    cursor: hand;
+}
+
+.menuBtn {
+    display: none;
+}
+
+/* Menu button replacing multiple nav buttons on narrower screens */
+@media (max-width: 740px) {
+    .menuBtn {
+        display: block;
+        position: fixed;
+        font-size: 16px;
+        font-weight: 1000;
+        letter-spacing: 0.05em;
+        z-index: 3;
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .menuBtn:hover {
+        color: hsl(180, 57%, 34%);
+        cursor: pointer;
+        cursor: hand;
+        -webkit-transition: color 0.5s;
+        -moz-transition:    color 0.5s;
+        -ms-transition:     color 0.5s;
+        -o-transition:      color 0.5s;
+        transition:         color 0.5s;
+    }
+
+    .menuBtnClicked:hover {
+        color: hsl(180, 57%, 34%);
+    }
+
+    #allNavHome {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #navHomeUnwrapped {
+        background-color: hsl(180, 57%, 59%, 1); 
+        transition: background-color 1s;
+        height: 130px;
+        padding-top: 25px;
+    }
+
+    .signInUp {
+        width: 100%;
+        flex-direction: column;
+        margin-top: 76px;
+    } 
+
+    /* nav buttons style when menu wrapped */
+    .signInUp li,
+    #navHome li{
+        width: 100%;
+        text-align: center;
+        display: none; 
+    } 
+
+    /* nav buttons style when menu unwrapped */
+    .signInUpunWrapped li,
+    #navHomeUnwrapped li {
+        width: 100%;
+        text-align: center;
+        display: inline-block; /* shown after Menu click */
+    } 
+}

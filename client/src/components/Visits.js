@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
-import './Doctors.css';
+import { NavBar } from './NavBar';
+import './Visits.css';
 
 const API_ENDPOINT = "http://127.0.0.1:4002/";
 
-export function Doctors() {
+export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
     const [determinant, setDeterminant] = useState();
 
@@ -23,17 +23,6 @@ export function Doctors() {
         const sortedList = mergeSortSplitting(patientsList);
         setPatientsList(sortedList);   
     }, [determinant])
-
-    function logPatientsList() {
-        // return console.log(patientsList[0]['day']);
-        // return console.log(patientsList[0][determinant]);
-        // return console.log(patientsList);
-        // return console.log(patientsList[3].surname > patientsList[4].surname);
-        // return console.log(patientsList[8].surname + ` vs ` + patientsList[9].surname + patientsList[9].surname > patientsList[10].surname);
-        // return console.log(patientsList[8].surname + ` < ` + patientsList[9].surname, patientsList[8].surname > patientsList[9].surname);
-        // return console.log(mergeSortSplitting(patientsList));
-        // return console.log([]);
-    }
 
     // The function receives a date in format DD.MM.YYYY and returns as YYYY.MM.DD which can be easily compared with the greater-than sign
     function makeDateComparable(dateString) {
@@ -147,7 +136,11 @@ export function Doctors() {
 
     return (
         <>
-            <p onClick={logPatientsList}>Hejo</p>
+            <NavBar 
+                btn1link={'/'} btn1desc={'Check schedule'} 
+                btn2link={'/home'} btn2desc={'Home'} 
+            />
+
             <div className='container'>
                 <tr className='patientsListHeaders'>
                     {/* <th>Index</th> */}

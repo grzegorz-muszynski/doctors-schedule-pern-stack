@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import { Table } from "./components/Table";
 import { Home } from './components/Home';
-import { Doctors } from './components/Doctors';
+import { Visits } from './components/Visits';
 
 export function App() {
     return (
         <Routes>
             <Route path="/" element={<Table />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/home/doctors" element={<Doctors />} />
+            <Route path="/visits" element={<Visits />} />
         </Routes>
     )
 }
