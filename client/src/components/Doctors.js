@@ -72,15 +72,19 @@ export function Doctors() {
 
         if (determinant === 'name' || determinant === 'surname') {
             while(leftArr.length && rightArr.length) {
-                if (leftArr[0][determinant].toLowerCase() < rightArr[0][determinant].toLowerCase())  array.push(leftArr.shift())
-                
-                array.push(rightArr.shift())
+                if (leftArr[0][determinant].toLowerCase() < rightArr[0][determinant].toLowerCase()) {
+                    array.push(leftArr.shift())
+                } else {
+                    array.push(rightArr.shift())
+                }
             }
         } else if (determinant === 'ssn' || determinant === 'phone_number') {
             while(leftArr.length && rightArr.length) {
-                if (Number(leftArr[0][determinant]) < Number(rightArr[0][determinant]))  array.push(leftArr.shift())
-
-                array.push(rightArr.shift())
+                if (Number(leftArr[0][determinant]) < Number(rightArr[0][determinant])) {
+                    array.push(leftArr.shift())
+                } else {
+                    array.push(rightArr.shift())
+                }
             }
         } else if (determinant === 'day') {
             while(leftArr.length && rightArr.length) {
@@ -89,9 +93,11 @@ export function Doctors() {
                 } else if (makeDateComparable(leftArr[0][determinant]) > makeDateComparable(rightArr[0][determinant])) {
                     array.push(rightArr.shift())
                 } else /* Visits with same dates are sorted secondly using time */ {
-                    if (makeTimeComparable(leftArr[0]['time']) < makeTimeComparable(rightArr[0]['time'])) array.push(leftArr.shift())
-                        
-                    array.push(rightArr.shift())
+                    if (makeTimeComparable(leftArr[0]['time']) < makeTimeComparable(rightArr[0]['time'])) {
+                        array.push(leftArr.shift())
+                    } else {
+                        array.push(rightArr.shift())
+                    }
                 }
             }
         } else {
@@ -101,9 +107,11 @@ export function Doctors() {
                 } else if (makeTimeComparable(leftArr[0][determinant]) > makeTimeComparable(rightArr[0][determinant])) {
                     array.push(rightArr.shift())
                 } else /* Visits with same time are sorted secondly using dates */ {
-                    if (makeDateComparable(leftArr[0]['day']) < makeDateComparable(rightArr[0]['day'])) array.push(leftArr.shift())
-
-                    array.push(rightArr.shift())
+                    if (makeDateComparable(leftArr[0]['day']) < makeDateComparable(rightArr[0]['day'])) {
+                        array.push(leftArr.shift())
+                    } else {
+                        array.push(rightArr.shift())
+                    }
                 }
             }
         }
