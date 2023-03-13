@@ -7,7 +7,22 @@ const API_ENDPOINT = "http://127.0.0.1:4002/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
+    const [doctorsList, setDoctorsList] = useState([
+        {
+            name: 'Nick',
+            surname: 'Smokey',
+            specialization: 'neurosurgeon'
+        },
+        {
+            name: 'Bartosz',
+            surname: 'Kanikuła',
+            specialization: 'cardiologist'
+        }
+    ]);
+    const [currentDoctor, setCurrentDoctor] = useState();
     const [determinant, setDeterminant] = useState();
+    const [toggleState, setToggleState] = useState(1);
+    const [inputRow, setInputRow] = useState();
 
     useEffect(() => {
         fetch(`${API_ENDPOINT}getting`, {
@@ -106,16 +121,16 @@ export function Visits() {
     }
 
     function sortPatientsList(e) {
-        console.log('foo1 ' + typeof e.target.dataset.determinant);
         setDeterminant(e.target.dataset.determinant)     
     }
 
     // displays list of patients
     function displayPatientsList(listForDisplaying) {
         let patientsTable = [];
+        let oddNumberRow = true;
 
         listForDisplaying.forEach(patientData => {
-            let displayedRow = <tr>
+            let displayedRow = <tr className={oddNumberRow ? 'oddRows' : 'evenRows'}>
                 {/* <td></td> */}
                 <td>{patientData.surname}</td>
                 <td>{patientData.name}</td>
@@ -124,10 +139,65 @@ export function Visits() {
                 <td className='dateCell'>{patientData.day}</td>
                 <td className='timeCell'>{patientData.time}</td>
             </tr>
+
             patientsTable = [...patientsTable, displayedRow];
+            oddNumberRow = !oddNumberRow;
         });
 
         return patientsTable;
+    }
+
+    // displays list of doctors
+    function displayDoctorsList(doctorsToDisplay) {
+        let doctorsTable = [];
+        let oddNumberRow = true;
+
+        doctorsToDisplay.forEach(doctorsData => {
+            let displayedRow = <tr className={oddNumberRow ? 'oddRows' : 'evenRows'}>
+                {/* <td></td> */}
+                <td>{doctorsData.surname}</td>
+                <td>{doctorsData.name}</td>
+                <td className='specializationCell'>{doctorsData.specialization}</td>
+            </tr>
+
+            doctorsTable = [...doctorsTable, displayedRow];
+            oddNumberRow = !oddNumberRow;
+        });
+
+        return doctorsTable;
+    }
+
+    // Switches between tables with visits and doctors depending on which button was clicked
+    function switchTables (e) {
+        console.log(typeof e.target.className);
+        console.log(e.target.className.includes('btnVisits'));
+
+        if (e.target.className.includes('btnVisits')) {
+            setToggleState(1)
+        } else {
+            setToggleState(2);
+        }
+    }
+
+    function addSpecialist () {            
+        let displayedRow = <>
+            <tr id='inputRow'>
+                <td><input placeholder='Surname' /></td>
+                <td><input placeholder='Name' /></td>
+                <td><input placeholder='Specialization' /></td>
+            </tr>
+        </>
+
+        console.log(displayedRow);
+        setInputRow(displayedRow);
+    }
+
+    function removeInsertRow () {
+        setInputRow(false)
+    }
+
+    function addSpecialistFinish () {
+
     }
 
     return (
@@ -136,18 +206,61 @@ export function Visits() {
                 btn1link={'/'} btn1desc={'Check schedule'} 
                 btn2link={'/home'} btn2desc={'Home'} 
             />
+            <div class='allContainer'>
+                <img src='./images/cockpitTools.jpg' id='visitsWallpaper' />
 
-            <div className='container'>
-                <tr className='patientsListHeaders'>
-                    {/* <th>Index</th> */}
-                    <th data-determinant={'surname'} onClick={sortPatientsList}>Surname</th>    
-                    <th data-determinant={'name'} onClick={sortPatientsList}>Name</th>
-                    <th data-determinant={'phone_number'} onClick={sortPatientsList}>Phone number</th>
-                    <th data-determinant={'ssn'} onClick={sortPatientsList}>Social Security Number</th>
-                    <th data-determinant={'day'} onClick={sortPatientsList}>Date of visit</th>
-                    <th data-determinant={'time'} onClick={sortPatientsList}>Time</th>
-                </tr>
-                {(!patientsList || patientsList === []) ? <p>there are no patients for this doctor</p> : displayPatientsList(patientsList)}
+                <div id='switcher'>
+                    <p onClick={switchTables} className={toggleState === 1 ? 'btnVisits clicked' : 'btnVisits'}>Visits</p>
+                    <p onClick={switchTables} className={toggleState === 2 ? 'btnDoctors clicked' : 'btnDoctors'}>Doctors</p>
+                </div>
+
+                <div id='patientsListTitle' style={toggleState === 2 ? {display: 'none'} : {display: 'flex'}}>
+                    <img src='./images/doctor-icon.png' id='doctorIcon' />
+                    <h3>Specialist: {determinant} {determinant}, {}</h3>
+                </div>
+
+                {/* Patients list for a doctor */}
+                <div id='listOfPatients' style={toggleState === 2 ? {display: 'none'} : {display: 'block'}}>
+                    <tr id='patientsListHeaders'>
+                        {/* <th>Index</th> */}
+                        <th data-determinant={'surname'} onClick={sortPatientsList}>Surname</th>    
+                        <th data-determinant={'name'} onClick={sortPatientsList}>Name</th>
+                        <th data-determinant={'phone_number'} onClick={sortPatientsList}>Phone number</th>
+                        <th data-determinant={'ssn'} onClick={sortPatientsList}>Social Security no.</th>
+                        <th data-determinant={'day'} onClick={sortPatientsList}>Date of visit</th>
+                        <th data-determinant={'time'} onClick={sortPatientsList}>Time</th>
+                    </tr>
+                    {(!patientsList || patientsList === []) ? <p>There are no visits booked for this doctor</p> : displayPatientsList(patientsList)}
+                </div>
+
+                <div id='doctorsListTitle' style={toggleState === 1 ? {display: 'none'} : {display: 'flex'}}>
+                    <img src='./images/plus2.png' id='plusIcon' onClick={addSpecialist} />
+                    <h3>Add a specialist</h3>
+                </div>
+
+
+                <div id='listOfDoctors' style={toggleState === 1 ? {display: 'none'} : {display: 'block'}}>
+                    <tr id='doctorsListHeaders'>
+                        <th>Surname</th>
+                        <th>Name</th>
+                        <th>Specialisation</th>
+                    </tr>
+
+                    {inputRow && inputRow}
+
+                    {(!doctorsList || doctorsList === []) ? <p>There are no doctors in the database</p> : displayDoctorsList(doctorsList)}
+
+                    <img 
+                        src='./images/cross.png' 
+                        style={!inputRow ? {display: 'none'} : {display: 'block'}}
+                        onClick={removeInsertRow}
+                    />
+                    <img 
+                        src='./images/tick.png' 
+                        style={!inputRow ? {display: 'none'} : {display: 'block'}} 
+                        onClick={addSpecialistFinish}
+                    />
+                </div>
             </div>
         </>
     )

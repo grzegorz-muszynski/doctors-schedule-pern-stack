@@ -1,23 +1,156 @@
-.container {
-    width: 840px;
+.allContainer {
+    /* justify-content: center;    */
+    width: 924px;
+    margin: 0 auto;
+}
+
+#visitsWallpaper {
+    margin-top: 30px;
+    /* display: inline-block; */
+    display: block;
+    width: 924px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+#switcher {
+    width: 550px;
+    height: 150px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    /* border-radius: 30px; */
+    display: flex;
+}
+
+#switcher p {
+    width: 275px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 26px;
+}
+
+.btnVisits,
+.btnDoctors {
+    border: 1px solid black;
+}
+
+.btnVisits {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.btnDoctors {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.clicked {
+    background-color:hsl(186, 74%, 76%);
+}
+
+@media(max-width: 924px) {
+    #visitsWallpaper {
+        width: 100%;
+    }
+}
+
+#patientsListTitle {
+    /* display: flex; already in conditional inline styling */
+    margin-top: 10px;
+}
+
+#patientsListTitle h3 {
+    line-height: 26px;
+    margin-left: 7px;
+}
+
+#doctorIcon {
+    height: 22px;
+    margin-top: 3px;
+}
+
+.oddRows {  
+    background-color: hsl(0, 0%, 99%);
+}
+
+.evenRows {  
+    background-color: hsl(186, 74%, 91%);
+}
+
+#patientsListHeaders {
+    width: 960px;
+    background-color:hsl(186, 74%, 76%);
+}
+
+#doctorsListHeaders {
+    width: 480px;
+    background-color:hsl(186, 74%, 76%);
+}
+
+#patientsListHeaders th,
+#doctorsListHeaders th {
+    width: 154px;
+    height: 40px;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+#listOfPatients {
+    width: 924px;
+    margin: 0 auto;
+    font-size: 16px;
+    /* display: none; */
+}
+
+#listOfDoctors {
+    width: 462px;
     margin: 0 auto;
     font-size: 16px;
 }
 
-.container th {
+/* Confirming tick icon */
+#listOfDoctors img[src*="tick"] {
+    height: 24px;
+    position: absolute;
+    right: calc(50% + 239px);
+    top: 549px;
+}
+
+/* Removing cross icon */
+#listOfDoctors img[src*=cross] {
+    height: 24px;
+    position: absolute;
+    left: calc(50% + 340px);
+    top: 549px;
+}
+
+#listOfPatients th {
     border-bottom: 1px solid black;
 }
 
-.container tr td {
+#listOfPatients tr td {
     border-bottom: 1px solid black;
 }
 
-.patientsListHeaders {
-    width: 840px;
+[data-determinant="surname"] {
+    padding-left: 3px;
 }
 
-.patientsListHeaders th {
-    width: 120px;
+[data-determinant="phone_number"] {
+    padding-left: 42px;
+}
+
+[data-determinant="ssn"] {
+    padding-left: 25px;
+}
+
+[data-determinant="day"] {
+    padding-left: 65px;
+}
+
+[data-determinant="time"] {
+    padding-left: 97px;
 }
 
 .phoneCell,
@@ -27,3 +160,17 @@
     text-align: right;
     padding-right: 5px;
 }
+
+/* Styling for doctors list's part */
+#doctorsListTitle {
+    margin-top: 10px;
+    margin-left: 50px;
+    padding-right: 8px;
+}
+
+#plusIcon {
+    height: 23px;
+    margin-top: 5px;
+    margin-right: 8px;
+}
+
