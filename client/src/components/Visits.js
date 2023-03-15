@@ -23,6 +23,30 @@ export function Visits() {
     const [determinant, setDeterminant] = useState();
     const [toggleState, setToggleState] = useState(1);
     const [inputRow, setInputRow] = useState();
+    const [optionsArr, setOptionsArr] = useState();
+    const specializationsArr = [
+        'Family medicine',
+        'Internal Medicine',
+        'Pediatrician',
+        'Gynecologist',
+        'Cardiologist',
+        'Oncologist',
+        'Gastroenterologist',
+        'Pulmonologist',
+        'Infectious disease',
+        'Nephrologist',
+        'Endocrinologist',
+        'Ophthalmologist',
+        'Otolaryngologist',
+        'Dermatologist',
+        'Psychiatrist',
+        'Neurologist',
+        'Radiologist',
+        'Anesthesiologist',
+        'Surgeon',
+        'Stomatologist',
+        'Physician executive'
+    ];
 
     useEffect(() => {
         fetch(`${API_ENDPOINT}getting`, {
@@ -38,6 +62,16 @@ export function Visits() {
         const sortedList = mergeSortSplitting(patientsList);
         setPatientsList(sortedList);   
     }, [determinant])
+
+    useEffect(() => {
+        let options = [];
+        let option;
+        specializationsArr.forEach(spec => {
+            option = <option value={spec}>{spec}</option>
+            options = [...options, option]
+        })
+        setOptionsArr(options);
+    }, [])
 
     // The function receives a date in format DD.MM.YYYY and returns as YYYY.MM.DD which can be easily compared with the greater-than sign
     function makeDateComparable(dateString) {
@@ -116,7 +150,6 @@ export function Visits() {
                 }
             }
         }
- 
         return array.concat(leftArr.slice()).concat(rightArr.slice());
     }
 
@@ -152,12 +185,17 @@ export function Visits() {
         let doctorsTable = [];
         let oddNumberRow = true;
 
-        doctorsToDisplay.forEach(doctorsData => {
+        doctorsToDisplay.forEach((doctorsData, index) => {
             let displayedRow = <tr className={oddNumberRow ? 'oddRows' : 'evenRows'}>
                 {/* <td></td> */}
                 <td>{doctorsData.surname}</td>
                 <td>{doctorsData.name}</td>
-                <td className='specializationCell'>{doctorsData.specialization}</td>
+                <td>{doctorsData.specialization}</td>
+                <img 
+                    src='./images/removeDoctor.png' 
+                    data-row={index} 
+                    onClick={removeSpecialist}
+                />
             </tr>
 
             doctorsTable = [...doctorsTable, displayedRow];
@@ -169,9 +207,6 @@ export function Visits() {
 
     // Switches between tables with visits and doctors depending on which button was clicked
     function switchTables (e) {
-        console.log(typeof e.target.className);
-        console.log(e.target.className.includes('btnVisits'));
-
         if (e.target.className.includes('btnVisits')) {
             setToggleState(1)
         } else {
@@ -182,22 +217,48 @@ export function Visits() {
     function addSpecialist () {            
         let displayedRow = <>
             <tr id='inputRow'>
-                <td><input placeholder='Surname' /></td>
-                <td><input placeholder='Name' /></td>
-                <td><input placeholder='Specialization' /></td>
+                <td><input className='inputs' placeholder='Surname' /></td>
+                <td><input className='inputs' placeholder='Name' /></td>
+                <td colSpan='2'>
+                    <select className='inputs' name='Specialization'>
+                        <option>Specialization</option>
+                        {optionsArr}
+                    </select>
+                </td>
             </tr>
         </>
-
-        console.log(displayedRow);
         setInputRow(displayedRow);
     }
 
     function removeInsertRow () {
-        setInputRow(false)
+        setInputRow()
+    }
+
+    function removeSpecialist (e) {
+        // Put here blockade for case when doctor has booked visits in future
+
+        let indexForRemove = e.target.dataset.row;
+        let newArr = doctorsList.filter((doctor, index) => {
+            return index !== Number(indexForRemove)
+        });
+
+        setDoctorsList(newArr);
     }
 
     function addSpecialistFinish () {
+        if (document.getElementsByClassName('inputs')[0].value === '' ||
+            document.getElementsByClassName('inputs')[1].value === '' ||
+            document.getElementsByClassName('inputs')[2].value === 'Specialization') return alert('Fill all inputs and choose specialization');
 
+        let newDoctorArr = {
+            surname: document.getElementsByClassName('inputs')[0].value,
+            name: document.getElementsByClassName('inputs')[1].value,
+            specialization: document.getElementsByClassName('inputs')[2].value
+        };
+
+        setDoctorsList([...doctorsList, newDoctorArr]);
+        
+        setInputRow();
     }
 
     return (
@@ -206,7 +267,7 @@ export function Visits() {
                 btn1link={'/'} btn1desc={'Check schedule'} 
                 btn2link={'/home'} btn2desc={'Home'} 
             />
-            <div class='allContainer'>
+            <div className='allContainer'>
                 <img src='./images/cockpitTools.jpg' id='visitsWallpaper' />
 
                 <div id='switcher'>
@@ -244,6 +305,7 @@ export function Visits() {
                         <th>Surname</th>
                         <th>Name</th>
                         <th>Specialisation</th>
+                        <th id='empty'></th>
                     </tr>
 
                     {inputRow && inputRow}
