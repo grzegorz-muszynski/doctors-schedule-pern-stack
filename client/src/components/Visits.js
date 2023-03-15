@@ -9,14 +9,14 @@ export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
     const [doctorsList, setDoctorsList] = useState([
         {
-            name: 'Nick',
-            surname: 'Smokey',
-            specialization: 'neurosurgeon'
+            name: 'John',
+            surname: 'Doe',
+            specialization: 'Neurologist'
         },
         {
-            name: 'Bartosz',
-            surname: 'Kanikuła',
-            specialization: 'cardiologist'
+            name: 'James',
+            surname: 'Wilson',
+            specialization: 'Gastroenterologist'
         }
     ]);
     const [currentDoctor, setCurrentDoctor] = useState();
@@ -25,27 +25,27 @@ export function Visits() {
     const [inputRow, setInputRow] = useState();
     const [optionsArr, setOptionsArr] = useState();
     const specializationsArr = [
-        'Family medicine',
-        'Internal Medicine',
-        'Pediatrician',
-        'Gynecologist',
+        'Anesthesiologist',
         'Cardiologist',
-        'Oncologist',
-        'Gastroenterologist',
-        'Pulmonologist',
-        'Infectious disease',
-        'Nephrologist',
+        'Dermatologist',
         'Endocrinologist',
+        'Family medicine',
+        'Gastroenterologist',
+        'Gynecologist',
+        'Infectious disease',
+        'Internal Medicine',
+        'Neurologist',
+        'Nephrologist',
+        'Oncologist',
         'Ophthalmologist',
         'Otolaryngologist',
-        'Dermatologist',
+        'Pediatrician',
+        'Physician executive',
+        'Pulmonologist',
         'Psychiatrist',
-        'Neurologist',
         'Radiologist',
-        'Anesthesiologist',
         'Surgeon',
-        'Stomatologist',
-        'Physician executive'
+        'Stomatologist'
     ];
 
     useEffect(() => {
@@ -162,8 +162,8 @@ export function Visits() {
         let patientsTable = [];
         let oddNumberRow = true;
 
-        listForDisplaying.forEach(patientData => {
-            let displayedRow = <tr className={oddNumberRow ? 'oddRows' : 'evenRows'}>
+        listForDisplaying.forEach((patientData, index) => {
+            let displayedRow = <tr key={'Patient row ' + index} className={oddNumberRow ? 'oddRows' : 'evenRows'}>
                 {/* <td></td> */}
                 <td>{patientData.surname}</td>
                 <td>{patientData.name}</td>
@@ -186,16 +186,16 @@ export function Visits() {
         let oddNumberRow = true;
 
         doctorsToDisplay.forEach((doctorsData, index) => {
-            let displayedRow = <tr className={oddNumberRow ? 'oddRows' : 'evenRows'}>
+            let displayedRow = <tr key={'Doctor row ' + index} className={oddNumberRow ? 'oddRows' : 'evenRows'}>
                 {/* <td></td> */}
                 <td>{doctorsData.surname}</td>
                 <td>{doctorsData.name}</td>
                 <td>{doctorsData.specialization}</td>
-                <img 
+                <td><img 
                     src='./images/removeDoctor.png' 
                     data-row={index} 
                     onClick={removeSpecialist}
-                />
+                /></td>
             </tr>
 
             doctorsTable = [...doctorsTable, displayedRow];
@@ -277,7 +277,7 @@ export function Visits() {
 
                 <div id='patientsListTitle' style={toggleState === 2 ? {display: 'none'} : {display: 'flex'}}>
                     <img src='./images/doctor-icon.png' id='doctorIcon' />
-                    <h3>Specialist: {determinant} {determinant}, {}</h3>
+                    <h3>Specialist: John Doe</h3>
                 </div>
 
                 {/* Patients list for a doctor */}
@@ -295,7 +295,7 @@ export function Visits() {
                 </div>
 
                 <div id='doctorsListTitle' style={toggleState === 1 ? {display: 'none'} : {display: 'flex'}}>
-                    <img src='./images/plus2.png' id='plusIcon' onClick={addSpecialist} />
+                    <img src='./images/plus.png' id='plusIcon' onClick={addSpecialist} />
                     <h3>Add a specialist</h3>
                 </div>
 

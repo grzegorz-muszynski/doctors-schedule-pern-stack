@@ -1,24 +1,27 @@
 .allContainer {
-    /* justify-content: center;    */
     width: 924px;
     margin: 0 auto;
 }
 
 #visitsWallpaper {
     margin-top: 30px;
-    /* display: inline-block; */
     display: block;
     width: 924px;
     margin: 0 auto;
     padding-top: 30px;
 }
 
+@media (max-width: 924px) {
+    .allContainer,
+    #visitsWallpaper {
+        width: 100vw;
+    }
+}
+
 #switcher {
     width: 550px;
-    height: 150px;
+    height: 120px;
     margin: 0 auto;
-    /* border: 1px solid red; */
-    /* border-radius: 30px; */
     display: flex;
 }
 
@@ -28,6 +31,16 @@
     line-height: 100px;
     text-align: center;
     font-size: 26px;
+}
+
+@media (max-width: 580px) {
+    #switcher {
+        width: 80vw;
+    }
+
+    #switcher p {
+        width: 40vw;
+    }
 }
 
 .btnVisits,
@@ -102,7 +115,6 @@
 
 #listOfPatients tr td {
     border-bottom: 1px solid black;
-    width: 121px;
 }
 
 [data-determinant="surname"] {
@@ -110,7 +122,7 @@
 }
 
 [data-determinant="phone_number"] {
-    padding-left: 42px;
+    padding-left: 50px;
 }
 
 [data-determinant="ssn"] {
@@ -118,11 +130,11 @@
 }
 
 [data-determinant="day"] {
-    padding-left: 65px;
+    padding-left: 43px;
 }
 
 [data-determinant="time"] {
-    padding-left: 97px;
+    padding-left: 92px;
 }
 
 .phoneCell,
@@ -133,7 +145,37 @@
     padding-right: 5px;
 }
 
+@media (max-width: 924px) {
+    #listOfPatients,
+    #allContainer#patientsListHeaders {
+        width: 96vw;
+    }
+}
+
+@media (max-width: 780px) {
+    #patientsListHeaders th {
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    #patientsListHeaders th {
+        padding-left: 0px;
+        width: 16vw;
+    }
+
+    #listOfPatients .oddRows td,
+    #listOfPatients .evenRows td {
+        max-width: 16vw;
+    }
+}
+
 /* Styling for doctors list's part */
+#doctorsListTitle {
+    position: relative;
+    left: 214px;
+}
+
 /* Whole list element */
 #listOfDoctors {
     width: 502px;
@@ -170,7 +212,7 @@
 }
 
 /* Icon responsible for deleting a doctor */
-#listOfDoctors tr img {
+#listOfDoctors img {
     height: 15px;
 }
 
@@ -212,4 +254,25 @@
     margin-top: 5px;
     margin-right: 8px;
     cursor: grab;
+}
+
+@media (max-width: 930px) {
+    #doctorsListTitle {
+        position: static;
+        margin-left: calc(50% - 250px);
+    }
+}
+
+@media (max-width: 505px) {
+    #listOfDoctors {
+        width: calc(90vw + 22px);
+    }
+
+    #doctorsListHeaders th {
+        width: 30vw;
+    }
+
+    #doctorsListTitle {
+        margin-left: 12px;
+    }
 }

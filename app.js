@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded in old version
 
-// Database
+// Database for visits
 const db = new Client({
     host: "localhost",
     user: "postgres",
