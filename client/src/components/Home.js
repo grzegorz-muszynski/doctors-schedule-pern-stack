@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import './Home.css';
 import { TestimonialSlider } from './TestimonialSlider';
+import { NavBar } from './NavBar';
 
 export function Home () {
-    // Variables initialized for manipulating responsive navbar on narrower screens 
-    const [menuBtnClicked, setMenuBtnClicked] = useState(false);
-    // Variables for manipulating the 'greeting' element
+    // Manipulating the 'greeting' element
     const [showGreeting, setShowGreeting] = useState(true);
     const controlGreeting = () => {
         if (window.scrollY > 100) {
@@ -16,6 +15,7 @@ export function Home () {
             setShowGreeting(true);
         }
     }
+
     // Variables for manipulating two text and image containers
     const triggeringOnce = {
         'threshold': 0,
@@ -32,28 +32,12 @@ export function Home () {
         }
     }, []);
 
-    function hideShowNavbar() {
-        setMenuBtnClicked(!menuBtnClicked);
-    }
-
-    function notFinished () {
-        alert(`That feature isn't completed yet. In the meantime, you can check two pages which are already available - the current one and the page with a table (the hyperlink in "Check Schedule" button).`);
-    }
-
     return (
         <>
-            <div className={menuBtnClicked ? 'menuBtn menuBtnClicked' : 'menuBtn'} onClick={hideShowNavbar}>Menu</div>
-
-            <div id='allNavHome'>
-                <ul id={menuBtnClicked ? 'navHomeUnwrapped' : 'navHome'}>
-                    <li><Link className='linksHome' to='/'>Check Schedule</Link></li>
-                    <li onClick={notFinished}><Link className='linksHome'>See list of doctors</Link></li>
-                </ul>
-                <ul className={menuBtnClicked ? 'signInUp signInUpunWrapped' : 'signInUp'}>
-                    <li onClick={notFinished}>Sign in</li>
-                    <li onClick={notFinished}>Sign up</li>
-                </ul>
-            </div>
+            <NavBar 
+                btn1link={'/'} btn1desc={'Check schedule'} 
+                btn2link={'/visits'} btn2desc={'See list of visits'} 
+            />
 
             <div className={showGreeting ?  'greeting' : 'greeting hiddenGreeting'}>
                 <h2>The program for a clinic</h2>

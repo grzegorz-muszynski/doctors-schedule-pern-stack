@@ -1,0 +1,313 @@
+.allContainer {
+    width: 924px;
+    margin: 0 auto;
+}
+
+#visitsWallpaper {
+    margin-top: 30px;
+    display: block;
+    width: 924px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+@media (max-width: 924px) {
+    .allContainer,
+    #visitsWallpaper {
+        width: 100vw;
+    }
+}
+
+#switcher {
+    width: 550px;
+    height: 120px;
+    margin: 0 auto;
+    display: flex;
+}
+
+#switcher p {
+    width: 275px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 26px;
+}
+
+@media (max-width: 580px) {
+    #switcher {
+        width: 80vw;
+    }
+
+    #switcher p {
+        width: 40vw;
+    }
+}
+
+.btnVisits,
+.btnDoctors {
+    border: 1px solid black;
+}
+
+.btnVisits {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.btnDoctors {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.clicked {
+    background-color:hsl(186, 74%, 76%);
+}
+
+@media(max-width: 924px) {
+    #visitsWallpaper {
+        width: 100%;
+    }
+}
+
+#patientsListTitle {
+    /* display: flex; already in conditional inline styling */
+    margin-top: 10px;
+}
+
+@media(max-width: 924px) {
+    #patientsListTitle {
+        margin-left: 20px;
+    }
+}
+
+#patientsListTitle h3 {
+    line-height: 26px;
+    margin-left: 7px;
+}
+
+#doctorIcon {
+    height: 22px;
+    margin-top: 3px;
+}
+
+.oddRows {  
+    background-color: hsl(0, 0%, 99%);
+}
+
+.evenRows {  
+    background-color: hsl(186, 74%, 91%);
+}
+
+#patientsListHeaders {
+    width: 960px;
+    background-color:hsl(186, 74%, 76%);
+}
+
+#patientsListHeaders th {
+    width: 160px;
+    height: 40px;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+#listOfPatients {
+    width: 924px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+#listOfPatients th {
+    border-bottom: 1px solid black;
+}
+
+#listOfPatients tr td {
+    border-bottom: 1px solid black;
+}
+
+[data-determinant="surname"] {
+    padding-left: 3px;
+}
+
+[data-determinant="phone_number"] {
+    padding-left: 50px;
+}
+
+[data-determinant="ssn"] {
+    padding-left: 25px;
+}
+
+[data-determinant="day"] {
+    padding-left: 43px;
+}
+
+[data-determinant="time"] {
+    padding-left: 92px;
+}
+
+.phoneCell,
+.ssnCell,
+.dateCell,
+.timeCell {
+    text-align: right;
+    padding-right: 5px;
+}
+
+@media (max-width: 924px) {
+    #listOfPatients,
+    #allContainer#patientsListHeaders {
+        width: 96vw;
+    }
+}
+
+@media (max-width: 780px) {
+    #patientsListHeaders th {
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    #patientsListHeaders th {
+        padding-left: 0px;
+        width: 16vw;
+    }
+
+    #listOfPatients .oddRows td,
+    #listOfPatients .evenRows td {
+        max-width: 16vw;
+    }
+}
+
+/* Styling for doctors list's part */
+#doctorsListTitle {
+    position: relative;
+    left: 214px;
+}
+
+/* Whole list element */
+#listOfDoctors {
+    width: 502px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+#doctorsListHeaders {
+    width: 502px;
+    background-color:hsl(186, 74%, 76%);
+}
+
+#doctorsListHeaders th {
+    width: 160px;
+    height: 40px;
+    line-height: normal;
+    vertical-align: middle;
+    padding-left: 2px;
+}
+
+/*  Style for.lastCol header
+    .lastCol alone, below doesn't overwrite the code for all th */
+.lastCol {
+    width: 22px !important;
+}
+
+.oddRows td,
+.evenRows td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 2px;
+    max-width: 160px; /* Necessary for working text-overflow property in this case */
+}
+
+/* Icon responsible for deleting a doctor */
+#listOfDoctors img {
+    height: 15px;
+    width: 15px;
+}
+
+#inputRow td {
+    width: 160px;
+}
+
+/* Row for inserting new doctors */
+#inputRow input {
+    width: 158px;
+    line-height: 24px;
+    height: 24px;
+    padding: 0;
+}
+
+#inputRow select {
+    width: 180px;
+    line-height: 24px;
+    height: 24px;
+    padding: 0;
+}
+
+#tableIconsContainer {
+    /* display: flex set by conditional styling in JS */
+    width: 560px;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* Tick icon */
+img[src*="tick"] {
+    height: 24px;
+    margin: 41px 5px 0 0;
+}
+
+/* Cross icon */
+img[src*=cross] {
+    height: 24px;
+    margin: 41px 0 0 5px;
+}
+
+#plusIcon {
+    height: 23px;
+    margin-top: 5px;
+    margin-right: 8px;
+    cursor: grab;
+}
+
+@media (max-width: 930px) {
+    #doctorsListTitle {
+        position: static;
+        margin-left: calc(50% - 250px);
+    }
+}
+
+@media (max-width: 580px) {
+    #tableIconsContainer {
+        width: 382px;
+    }
+
+    #listOfDoctors,
+    #doctorsListHeaders,
+    #inputRow,
+    #listOfDoctors .evenRows,
+    #listOfDoctors .oddRows {
+        width: 322px;
+    }
+
+    #doctorsListHeaders th,
+    #inputRow td {
+        width: 100px;
+    }
+    
+    #inputRow input {
+        width: 98px;
+    }
+    
+    #inputRow select {
+        max-width: 122px;
+    }
+
+    #listOfDoctors .evenRows td,
+    #listOfDoctors .oddRows td {
+        max-width: 97px;
+    }
+    
+    #doctorsListTitle {
+        width: 220px;
+        margin: 0 auto;
+    }
+}

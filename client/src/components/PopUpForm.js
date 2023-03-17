@@ -22,7 +22,7 @@ export function PopUpForm(props) {
                 <RowInput htmlFor="surname" description="Patient's surname:" type="text" id="surname" name="surname" patientData={props.patientData.surname} />
                 <RowInput htmlFor="number" description="Number of phone:" type="number" id="number" name="phoneNumber" 
                 patientData={props.patientData.phone} />
-                <RowInput htmlFor="ssn" description="Social Security number:" type="text" id="ssn" name="SocialSecurityNumber" patientData={props.patientData.ssn} />
+                <RowInput htmlFor="ssn" description="Social Security number:" type="number" id="ssn" name="SocialSecurityNumber" patientData={props.patientData.ssn} />
   
                 {/* If there is no data in a slot to modify, the submit button will be available and the rest will be disabled (change and delete buttons), otherwise buttons are set in way allowing for modification of patient's data */}
                 <div id="btnContainer">

@@ -34,7 +34,7 @@ export function CellsCreator (props) {
 
     // Generating cells
     useEffect(() => {
-      if (!backendData) return; // Prevents an app crach when page is bing opened and there is no data yet
+      if (!backendData) return; // Prevents an app crach when page is opened and there is no data yet
 
       let lastMonday = new Date(props.lastMon);
       let today = new Date();
