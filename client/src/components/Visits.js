@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
@@ -66,8 +65,8 @@ export function Visits() {
     useEffect(() => {
         let options = [];
         let option;
-        specializationsArr.forEach(spec => {
-            option = <option value={spec}>{spec}</option>
+        specializationsArr.forEach((spec, index) => {
+            option = <option key={'Option no.' + index} value={spec}>{spec}</option>
             options = [...options, option]
         })
         setOptionsArr(options);
@@ -191,7 +190,7 @@ export function Visits() {
                 <td>{doctorsData.surname}</td>
                 <td>{doctorsData.name}</td>
                 <td>{doctorsData.specialization}</td>
-                <td><img 
+                <td className='lastCol'><img 
                     src='./images/removeDoctor.png' 
                     data-row={index} 
                     onClick={removeSpecialist}
@@ -281,46 +280,51 @@ export function Visits() {
                 </div>
 
                 {/* Patients list for a doctor */}
-                <div id='listOfPatients' style={toggleState === 2 ? {display: 'none'} : {display: 'block'}}>
-                    <tr id='patientsListHeaders'>
-                        {/* <th>Index</th> */}
-                        <th data-determinant={'surname'} onClick={sortPatientsList}>Surname</th>    
-                        <th data-determinant={'name'} onClick={sortPatientsList}>Name</th>
-                        <th data-determinant={'phone_number'} onClick={sortPatientsList}>Phone number</th>
-                        <th data-determinant={'ssn'} onClick={sortPatientsList}>Social Security no.</th>
-                        <th data-determinant={'day'} onClick={sortPatientsList}>Date of visit</th>
-                        <th data-determinant={'time'} onClick={sortPatientsList}>Time</th>
-                    </tr>
-                    {(!patientsList || patientsList === []) ? <p>There are no visits booked for this doctor</p> : displayPatientsList(patientsList)}
-                </div>
+                <table id='listOfPatients' style={toggleState === 2 ? {display: 'none'} : {display: 'block'}}>
+                    <tbody>
+                        <tr id='patientsListHeaders'>
+                            {/* <th>Index</th> */}
+                            <th data-determinant={'surname'} onClick={sortPatientsList}>Surname</th>    
+                            <th data-determinant={'name'} onClick={sortPatientsList}>Name</th>
+                            <th data-determinant={'phone_number'} onClick={sortPatientsList}>Phone number</th>
+                            <th data-determinant={'ssn'} onClick={sortPatientsList}>Social Security no.</th>
+                            <th data-determinant={'day'} onClick={sortPatientsList}>Date of visit</th>
+                            <th data-determinant={'time'} onClick={sortPatientsList}>Time</th>
+                        </tr>
+                        
+                        {(!patientsList || patientsList === []) ? <p>There are no visits booked for this doctor</p> : displayPatientsList(patientsList)}
+                    </tbody>
+                </table>
 
                 <div id='doctorsListTitle' style={toggleState === 1 ? {display: 'none'} : {display: 'flex'}}>
                     <img src='./images/plus.png' id='plusIcon' onClick={addSpecialist} />
                     <h3>Add a specialist</h3>
                 </div>
 
-
-                <div id='listOfDoctors' style={toggleState === 1 ? {display: 'none'} : {display: 'block'}}>
-                    <tr id='doctorsListHeaders'>
-                        <th>Surname</th>
-                        <th>Name</th>
-                        <th>Specialisation</th>
-                        <th id='empty'></th>
-                    </tr>
-
-                    {inputRow && inputRow}
-
-                    {(!doctorsList || doctorsList === []) ? <p>There are no doctors in the database</p> : displayDoctorsList(doctorsList)}
-
+                <div id='tableIconsContainer' style={toggleState === 1 ? {display: 'none'} : {display: 'flex'}}>
                     <img 
-                        src='./images/cross.png' 
-                        style={!inputRow ? {display: 'none'} : {display: 'block'}}
-                        onClick={removeInsertRow}
+                            src='./images/tick.png' 
+                            style={!inputRow ? {display: 'none'} : {display: 'block'}} 
+                            onClick={addSpecialistFinish}
                     />
+                    <table id='listOfDoctors'>
+                        <tbody>
+                            <tr id='doctorsListHeaders'>
+                                <th>Surname</th>
+                                <th>Name</th>
+                                <th>Specialisation</th>
+                                <th className='lastCol'></th>
+                            </tr>
+
+                            {inputRow && inputRow}
+
+                            {(!doctorsList || doctorsList === []) ? <p>There are no doctors in the database</p> : displayDoctorsList(doctorsList)}
+                        </tbody>
+                    </table>
                     <img 
-                        src='./images/tick.png' 
-                        style={!inputRow ? {display: 'none'} : {display: 'block'}} 
-                        onClick={addSpecialistFinish}
+                            src='./images/cross.png' 
+                            style={!inputRow ? {display: 'none'} : {display: 'block'}}
+                            onClick={removeInsertRow}
                     />
                 </div>
             </div>

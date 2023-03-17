@@ -26,7 +26,7 @@ export const Table = () => {
     }, []); // While first rendering, there is set a last monday counting from a day we are opening the program
 
     function notFinished () {
-        alert(`That feature isn't completed yet. In the meantime, you can check two pages which are already available - the current one and the home page (the hyperlink in "Home" button).`);
+        alert(`That feature isn't completed yet. In the meantime, you can check three pages which are already available - the current one, the home page (the hyperlink in "Home" button), and page with visits lists (going to the home page an clicking in the top of the page 'See list of visits')`);
     }
 
     // Event handlers changing monday dates for a next week... 

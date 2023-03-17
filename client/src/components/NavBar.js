@@ -11,7 +11,7 @@ export function NavBar (props) {
     }
 
     function notFinished () {
-        alert(`That feature isn't completed yet. In the meantime, you can check two pages which are already available - the current one and the page with a table (the hyperlink in "Check schedule" button).`);
+        alert(`That feature isn't completed yet. In the meantime, you can check three pages which are already available - the page with a table (the hyperlink in "Check schedule" button), the 'Home' page and the page with list of patients via 'See list of visits' button.`);
     }
 
     return (
