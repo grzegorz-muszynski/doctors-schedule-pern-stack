@@ -109,6 +109,11 @@
     vertical-align: middle;
 }
 
+#patientsListHeaders img {
+    height: 17px;
+    padding-left: 3px;
+}
+
 #listOfPatients {
     width: 924px;
     margin: 0 auto;
@@ -128,19 +133,19 @@
 }
 
 [data-determinant="phone_number"] {
-    padding-left: 50px;
+    padding-left: 92px;
 }
 
 [data-determinant="ssn"] {
-    padding-left: 25px;
+    padding-left: 12px;
 }
 
 [data-determinant="day"] {
-    padding-left: 43px;
+    padding-left: 46px;
 }
 
 [data-determinant="time"] {
-    padding-left: 92px;
+    padding-left: 96px;
 }
 
 .phoneCell,
