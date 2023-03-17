@@ -133,11 +133,11 @@
 }
 
 [data-determinant="phone_number"] {
-    padding-left: 92px;
+    padding-left: 84px;
 }
 
 [data-determinant="ssn"] {
-    padding-left: 12px;
+    padding-left: 5px;
 }
 
 [data-determinant="day"] {
