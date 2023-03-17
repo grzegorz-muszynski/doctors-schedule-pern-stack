@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
-const API_ENDPOINT = "http://127.0.0.1:4002/";
+const API_ENDPOINT = "/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
@@ -291,7 +291,7 @@ export function Visits() {
                             <th data-determinant={'day'} onClick={sortPatientsList}>Date of visit</th>
                             <th data-determinant={'time'} onClick={sortPatientsList}>Time</th>
                         </tr>
-                        
+
                         {(!patientsList || patientsList === []) ? <p>There are no visits booked for this doctor</p> : displayPatientsList(patientsList)}
                     </tbody>
                 </table>
