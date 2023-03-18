@@ -23,7 +23,7 @@ const db = new Client({
     password: xxx
 });
 ```
-2. In two front-end files, client\src\components\Table.js and client\src\components\CellsCreator.js, assign the API_ENDPOINTs like below:
+2. In three files Table.js, CellsCreator.js and Visits.js, in the directory "client\src\components\", assign the API_ENDPOINTs like below:
 ```
 const API_ENDPOINT = "http://127.0.0.1:4002/";
 ```
