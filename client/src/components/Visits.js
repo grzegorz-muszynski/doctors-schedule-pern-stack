@@ -153,6 +153,7 @@ export function Visits() {
     }
 
     function sortPatientsList(e) {
+        console.log(e.target);
         setDeterminant(e.target.dataset.determinant)     
     }
 
@@ -284,12 +285,24 @@ export function Visits() {
                     <tbody>
                         <tr id='patientsListHeaders'>
                             {/* <th>Index</th> */}
-                            <th data-determinant={'surname'} onClick={sortPatientsList}>Surname</th>    
-                            <th data-determinant={'name'} onClick={sortPatientsList}>Name</th>
-                            <th data-determinant={'phone_number'} onClick={sortPatientsList}>Phone number</th>
-                            <th data-determinant={'ssn'} onClick={sortPatientsList}>Social Security no.</th>
-                            <th data-determinant={'day'} onClick={sortPatientsList}>Date of visit</th>
-                            <th data-determinant={'time'} onClick={sortPatientsList}>Time</th>
+                            <th data-determinant={'surname'} onClick={sortPatientsList}>
+                                Surname ⯆
+                            </th>    
+                            <th data-determinant={'name'} onClick={sortPatientsList}>
+                                Name ⯆
+                            </th>
+                            <th data-determinant={'phone_number'} onClick={sortPatientsList}>
+                                Phone ⯆
+                            </th>
+                            <th data-determinant={'ssn'} onClick={sortPatientsList}>
+                                Social Security no. ⯆
+                            </th>
+                            <th data-determinant={'day'} onClick={sortPatientsList}>
+                                Date of visit ⯆
+                            </th>
+                            <th data-determinant={'time'} onClick={sortPatientsList}>
+                                Time ⯆
+                            </th>
                         </tr>
 
                         {(!patientsList || patientsList === []) ? <p>There are no visits booked for this doctor</p> : displayPatientsList(patientsList)}
