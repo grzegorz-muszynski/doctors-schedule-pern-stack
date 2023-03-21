@@ -5,7 +5,7 @@ import { Visits } from './components/Visits';
 
 export function App() {
     return (
-        <Routes>
+        <Routes basename="/">
             <Route exact path="/" element={<Table />} />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/visits" element={<Visits />} />
