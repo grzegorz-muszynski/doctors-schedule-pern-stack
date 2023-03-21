@@ -153,7 +153,6 @@ export function Visits() {
     }
 
     function sortPatientsList(e) {
-        console.log(__dirname);
         setDeterminant(e.target.dataset.determinant)     
     }
 
