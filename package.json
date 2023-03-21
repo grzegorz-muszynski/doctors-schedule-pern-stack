@@ -8,8 +8,8 @@
     "npm": "9.4.2"
   },
   "scripts": {
-    "start": "node app.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "scripts": {
+      "build:ui": "rm -rf build && cd ./client && npm run build --prod && cp -r build ../"
   },
   "dependencies": {
     "cors": "^2.8.5",
