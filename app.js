@@ -24,7 +24,7 @@ const db = new Client({
 db.connect();
 
 // ROUTES
-app.get('/*/getting', (req, res) => {
+app.get('/*', (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
         if (!err) {
