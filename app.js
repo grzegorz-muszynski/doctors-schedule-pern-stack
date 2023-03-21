@@ -10,16 +10,26 @@ const PORT = process.env.PORT || 4002;
 // Middleware
 app.use(cors());
 app.use(express.json()); // Recognize Request Objects as JSON objects
-app.use(express.static(path.join(__dirname, "client/build")));
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static("build"));
+    app.get('*', (req, res) => {
+        req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    })
+} else {
+    app.use(express.static(path.join(__dirname, "client/build")));
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database
 const db = new Client({
-    connectionString: process.env.DATABASE_URL, // Heroku addons
-    ssl: {
-        rejectUnauthorized: false
-    }
+    host: "localhost",
+    user: "postgres",
+    port: 5432,
+    database: "postgres",
+    password: "elephant46"
 });
 db.connect();
 

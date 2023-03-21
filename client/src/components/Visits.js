@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
-const API_ENDPOINT = "/";
+const API_ENDPOINT = "http://127.0.0.1:4002/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
@@ -153,6 +153,9 @@ export function Visits() {
     }
 
     function sortPatientsList(e) {
+
+        console.log(__dirname);
+
         setDeterminant(e.target.dataset.determinant)     
     }
 
