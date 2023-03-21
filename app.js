@@ -11,14 +11,14 @@ const PORT = process.env.PORT || 4002;
 app.use(cors());
 app.use(express.json()); // Recognize Request Objects as JSON objects
 
-if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
-    app.use(express.static("/build"));
-    // app.get('*', (req, res) => {
-    //     req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-    // })
-} else {
+// if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
+//     app.use(express.static("/build"));
+//     // app.get('*', (req, res) => {
+//     //     req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+//     // })
+// } else {
     app.use(express.static(path.join(__dirname, "client/build")));
-}
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
