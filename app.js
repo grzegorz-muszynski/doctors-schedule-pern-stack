@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 4002;
 app.use(cors());
 app.use(express.json()); // Recognize Request Objects as JSON objects
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static("build"));
+if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
+    app.use(express.static("https://doctors-schedule-pern-stack.herokuapp.com/"));
     // app.get('*', (req, res) => {
     //     req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     // })
