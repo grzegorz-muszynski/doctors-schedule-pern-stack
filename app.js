@@ -12,9 +12,9 @@ app.use(cors());
 app.use(express.json()); // Recognize Request Objects as JSON objects
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // express.urlencoded in old version
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Database for visits
+// Database
 const db = new Client({
     connectionString: process.env.DATABASE_URL, // Heroku addons
     ssl: {
@@ -24,7 +24,7 @@ const db = new Client({
 db.connect();
 
 // ROUTES
-app.get('/getting', (req, res) => {
+app.get(`${__dirname}/getting`, (req, res) => {
     const sql2 = `SELECT * FROM visits`;
     db.query(sql2, (err, data) => {
         if (!err) {
