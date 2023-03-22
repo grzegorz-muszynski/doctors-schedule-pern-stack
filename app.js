@@ -17,18 +17,11 @@ app.use(express.json()); // Recognize Request Objects as JSON objects
 //     //     req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 //     // })
 // } else {
-app.use(express.static(path.join(__dirname, "client/build")));
+    app.use(express.static(path.join(__dirname, "client/build")));
 // }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/*', (req, res) => {
-    let url = path.join(__dirname, '../client/build', 'index.html');
-    if (!url.startsWith('/app/')) // we're on local windows
-      url = url.substring(1);
-    res.sendFile(url);
-  });
 
 // Database
 // const db = new Client({
@@ -46,6 +39,13 @@ const db = new Client({
     }
 });
 db.connect();
+
+app.get('/*', (req, res) => {
+    let url = path.join(__dirname, '../client/build', 'index.html');
+    if (!url.startsWith('/app/')) // we're on local windows
+      url = url.substring(1);
+    res.sendFile(url);
+  });
 
 // ROUTES
 app.get('/getting', (req, res) => {
