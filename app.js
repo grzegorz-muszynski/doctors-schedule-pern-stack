@@ -10,28 +10,10 @@ const PORT = process.env.PORT || 4002;
 // Middleware
 app.use(cors());
 app.use(express.json()); // Recognize Request Objects as JSON objects
-
-// if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
-//     app.use(express.static("/build"));
-//     // app.get('*', (req, res) => {
-//     //     req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-//     // })
-// } else {
-    app.use(express.static(path.join(__dirname, "client/build")));
-// }
-
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Database
-// const db = new Client({
-//     host: "localhost",
-//     user: "postgres",
-//     port: 5432,
-//     database: "postgres",
-//     password: "elephant46"
-// });
-// db.connect();
 const db = new Client({
     connectionString: process.env.DATABASE_URL, // Heroku addons
     ssl: {
@@ -39,23 +21,6 @@ const db = new Client({
     }
 });
 db.connect();
-
-// app.get('/*', (req, res) => {
-//     let url = path.join(__dirname, '../client/build', 'index.html');
-//     if (!url.startsWith('/app/')) // we're on local windows
-//       url = url.substring(1);
-//     res.sendFile(url);
-//   });
-// app.get('/', function (req, res) {
-//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-// app.get("*", (req, res) => {
-//     let url = path.join(__dirname, '../client/build', 'index.html');
-//     if (!url.startsWith('/app/')) // since we're on local windows
-//       url = url.substring(1);
-//     res.sendFile(url);
-//   });
 
 // ROUTES
 app.get('/getting', (req, res) => {
