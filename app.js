@@ -46,6 +46,9 @@ db.connect();
 //       url = url.substring(1);
 //     res.sendFile(url);
 //   });
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // ROUTES
 app.get('/getting', (req, res) => {
