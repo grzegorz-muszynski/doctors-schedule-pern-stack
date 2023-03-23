@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
-const API_ENDPOINT = "http://127.0.0.1:4002/";
+const API_ENDPOINT = "/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
