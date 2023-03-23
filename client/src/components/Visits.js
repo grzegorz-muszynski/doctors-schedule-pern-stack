@@ -2,22 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
-const API_ENDPOINT = "/";
+const API_ENDPOINT = "http://127.0.0.1:4002/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
-    const [doctorsList, setDoctorsList] = useState([
-        {
-            name: 'John',
-            surname: 'Doe',
-            specialization: 'Neurologist'
-        },
-        {
-            name: 'James',
-            surname: 'Wilson',
-            specialization: 'Gastroenterologist'
-        }
-    ]);
+    const [doctorsList, setDoctorsList] = useState([]);
+    const [renderDoctorsTrigger, setRenderDoctorsTrigger] = useState(0);
     const [currentDoctor, setCurrentDoctor] = useState();
     const [determinant, setDeterminant] = useState();
     const [toggleState, setToggleState] = useState(1);
@@ -56,6 +46,16 @@ export function Visits() {
             patientsData => setPatientsList(patientsData)
         )
     }, []);
+
+    useEffect(() => {
+        fetch(`${API_ENDPOINT}doctors`, {
+            method: 'GET'
+        }).then(
+            response => response.json()
+        ).then(
+            doctorsData => setDoctorsList(doctorsData)
+        )
+    }, [renderDoctorsTrigger]);
 
     useEffect(() => {
         const sortedList = mergeSortSplitting(patientsList);
@@ -153,9 +153,6 @@ export function Visits() {
     }
 
     function sortPatientsList(e) {
-
-        console.log(__dirname);
-
         setDeterminant(e.target.dataset.determinant)     
     }
 
@@ -195,7 +192,8 @@ export function Visits() {
                 <td>{doctorsData.specialization}</td>
                 <td className='lastCol'><img 
                     src='./images/removeDoctor.png' 
-                    data-row={index} 
+                    data-row={index}
+                    data-dbindex={doctorsData.id}
                     onClick={removeSpecialist}
                 /></td>
             </tr>
@@ -218,17 +216,18 @@ export function Visits() {
 
     function addSpecialist () {            
         let displayedRow = <>
-            <tr id='inputRow'>
-                <td><input className='inputs' placeholder='Surname' /></td>
-                <td><input className='inputs' placeholder='Name' /></td>
-                <td colSpan='2'>
-                    <select className='inputs' name='Specialization'>
-                        <option>Specialization</option>
-                        {optionsArr}
-                    </select>
-                </td>
-            </tr>
-        </>
+                <tr id='inputRow'>
+                    <td><input className='inputs' placeholder='Surname' /></td>
+                    <td><input className='inputs' placeholder='Name' /></td>
+                    <td colSpan='2'>
+                        <select className='inputs' name='Specialization'>
+                            <option>Specialization</option>
+                            {optionsArr}
+                        </select>
+                    </td>
+                </tr>
+            </>
+
         setInputRow(displayedRow);
     }
 
@@ -237,14 +236,21 @@ export function Visits() {
     }
 
     function removeSpecialist (e) {
-        // Put here blockade for case when doctor has booked visits in future
 
-        let indexForRemove = e.target.dataset.row;
+        // Put here blockade for case when doctor has booked visits in future
+        
+        let indexForRemove = e.target.dataset.row; // For removing row in Frontend
+        let doctorToRemove = e.target.dataset.dbindex; // For removing row from db table
+        
         let newArr = doctorsList.filter((doctor, index) => {
             return index !== Number(indexForRemove)
         });
-
         setDoctorsList(newArr);
+
+        // Database
+        fetch(`${API_ENDPOINT}doctors/${doctorToRemove}`, {
+            method: 'DELETE'
+        })
     }
 
     function addSpecialistFinish () {
@@ -252,15 +258,27 @@ export function Visits() {
             document.getElementsByClassName('inputs')[1].value === '' ||
             document.getElementsByClassName('inputs')[2].value === 'Specialization') return alert('Fill all inputs and choose specialization');
 
-        let newDoctorArr = {
+        let newDoctorObj = {
             surname: document.getElementsByClassName('inputs')[0].value,
             name: document.getElementsByClassName('inputs')[1].value,
             specialization: document.getElementsByClassName('inputs')[2].value
         };
 
-        setDoctorsList([...doctorsList, newDoctorArr]);
-        
-        setInputRow();
+        setInputRow(); // Removing the input row
+
+        // Inserting into the database
+        let postedData = Object.values(newDoctorObj);
+
+        fetch(`${API_ENDPOINT}doctors`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postedData)
+        });
+
+        // Triggers getting new doctors data and rendering it in the table
+        setRenderDoctorsTrigger(!renderDoctorsTrigger);
     }
 
     return (
