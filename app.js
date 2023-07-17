@@ -20,6 +20,7 @@ const db = new Client({
         rejectUnauthorized: false
     }
 });
+db.connect();
 
 // ROUTES
 app.get('/getting', (req, res) => {
