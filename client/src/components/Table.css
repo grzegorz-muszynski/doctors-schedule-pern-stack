@@ -6,7 +6,6 @@
 
 body {
     color: black;
-    /* font-family:  'Roboto', 'Arial', sans-serif; */
     font-family:  'Roboto', 'Arial', sans-serif;
     font-size: 20px;
     font-weight: 550;
@@ -30,7 +29,6 @@ body {
     right: calc(50% + 240px);
     width: 400px;
     top: 10px;
-    /* bottom: 10px; */
 }
 
 #homeBtn, #chooseBtn {
@@ -76,7 +74,6 @@ body {
 @media (max-width: 1150px) {    
     #homeBtn, #chooseBtn {
         font-size: 20px; 
-        /* height: 20px; */
     }
 
     .separator {
@@ -108,14 +105,12 @@ body {
 #schedule {
     position: relative;
     background-color: hsl(180, 57%, 59%);
-    /* background-color: hsl(180, 62%, 59%); */
     margin: 10px auto;
     opacity: 0.8;
 }
 
 .firstColumn  {
     border: 1px solid hsl(180, 57%, 34%);
-    /* border-right: 1px solid hsl(180, 57%, 34%); */
 }
 
 .timeSlot {
@@ -216,6 +211,7 @@ body {
     width: 450px;
     height: 300px;
     margin: 280px auto;
+
     /* Glass effect */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
@@ -261,20 +257,17 @@ body {
 }
 
 #submitBtn {
-    /* background-color: hsl(104, 73%, 37%); */
     background: linear-gradient(100deg, hsl(103, 73%, 30%),hsl(95, 83%, 38%));
 }
 
 #changeBtn {
     /* background-color: hsl(39, 100%, 46%); */
-    /* background: linear-gradient(100deg, hsl(39, 85%, 33%), hsl(31, 100%, 55%)); */
     background: linear-gradient(100deg, hsl(31, 100%, 35%), hsl(31, 100%, 55%));
     margin: 0 7px;
 }
 
 #deleteBtn {
     /* background-color: hsl(2, 80%, 47%); */
-    /* background: linear-gradient(100deg, hsl(0, 73%, 33%), hsl(1, 100%, 49%)); */
     background: linear-gradient(100deg, hsl(1, 90%, 32%), hsl(1, 90%, 59%));
 }
 

@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
 const API_ENDPOINT = "/";
+// Local:
+// const API_ENDPOINT = "http://localhost:4002/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
@@ -186,11 +188,11 @@ export function Visits() {
 
         doctorsToDisplay.forEach((doctorsData, index) => {
             let displayedRow = <tr key={'Doctor row ' + index} className={oddNumberRow ? 'oddRows' : 'evenRows'}>
-                {/* <td></td> */}
                 <td>{doctorsData.surname}</td>
                 <td>{doctorsData.name}</td>
                 <td>{doctorsData.specialization}</td>
                 <td className='lastCol'><img 
+                    key={`Row no.: ${index}`}
                     src='./images/removeDoctor.png' 
                     data-row={index}
                     data-dbindex={doctorsData.id}
@@ -216,17 +218,17 @@ export function Visits() {
 
     function addSpecialist () {            
         let displayedRow = <>
-                <tr id='inputRow'>
-                    <td><input className='inputs' placeholder='Surname' /></td>
-                    <td><input className='inputs' placeholder='Name' /></td>
-                    <td colSpan='2'>
-                        <select className='inputs' name='Specialization'>
-                            <option>Specialization</option>
-                            {optionsArr}
-                        </select>
-                    </td>
-                </tr>
-            </>
+            <tr id='inputRow'>
+                <td><input className='inputs' placeholder='Surname' /></td>
+                <td><input className='inputs' placeholder='Name' /></td>
+                <td colSpan='2'>
+                    <select className='inputs' name='Specialization'>
+                        <option>Specialization</option>
+                        {optionsArr}
+                    </select>
+                </td>
+            </tr>
+        </>
 
         setInputRow(displayedRow);
     }
@@ -237,7 +239,7 @@ export function Visits() {
 
     function removeSpecialist (e) {
 
-        // Put here blockade for case when doctor has booked visits in future
+        // GOAL: put here blockade for case when doctor has booked visits for future
         
         let indexForRemove = e.target.dataset.row; // For removing row in Frontend
         let doctorToRemove = e.target.dataset.dbindex; // For removing row from db table
@@ -248,9 +250,9 @@ export function Visits() {
         setDoctorsList(newArr);
 
         // Database
-        fetch(`${API_ENDPOINT}doctors/${doctorToRemove}`, {
-            method: 'DELETE'
-        })
+        // fetch(`${API_ENDPOINT}doctors/${doctorToRemove}`, {
+        //     method: 'DELETE'
+        // });
     }
 
     function addSpecialistFinish () {
@@ -304,7 +306,6 @@ export function Visits() {
                 <table id='listOfPatients' style={toggleState === 2 ? {display: 'none'} : {display: 'block'}}>
                     <tbody>
                         <tr id='patientsListHeaders'>
-                            {/* <th>Index</th> */}
                             <th data-determinant={'surname'} onClick={sortPatientsList}>
                                 Surname ⯆
                             </th>    

@@ -69,7 +69,6 @@
 }
 
 #patientsListTitle {
-    /* display: flex; already in conditional inline styling */
     margin-top: 10px;
 }
 
