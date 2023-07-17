@@ -36,6 +36,19 @@ app.get('/getting', (req, res) => {
     });
 });
 
+app.get('/doctors', (req, res) => {
+    const sql2 = `SELECT * FROM doctors`;
+    db.query(sql2, (err, data) => {
+        if (!err) {
+            let doctorsDb = data.rows;
+            res.status(200).json(doctorsDb);
+        } else {
+            console.log(err.message);
+        }
+        db.end;
+    });
+});
+
 // The routes used by Table components
 app.post('/posting', (req, res, next) => {
     // Inserting into a database
@@ -47,6 +60,22 @@ app.post('/posting', (req, res, next) => {
         req.body[3],
         req.body[4],
         req.body[5]
+    ], function(err) {
+        if (err) {
+            console.log("Error while inserting into a database: ", err);
+            return res.sendStatus(500);
+        } else {
+            return res.sendStatus(201);
+        }
+    });
+});
+
+app.post('/doctors', (req, res, next) => {
+     const sql = 'INSERT INTO doctors (surname, name, specialization) VALUES ($1, $2, $3)';
+    db.query(sql, [
+        req.body[0],
+        req.body[1],
+        req.body[2]
     ], function(err) {
         if (err) {
             console.log("Error while inserting into a database: ", err);
@@ -83,6 +112,22 @@ app.delete('/day/:day/time/:time', (req, res) => {
     db.query(sql, [
         req.params.day,
         req.params.time
+    ], function(err) {
+        if (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        } else {
+            return res.sendStatus(204);
+        }
+    });
+});
+
+app.delete('/doctors/:id', (req, res) => {
+    console.log(req.params.id);
+    // Deleting data inside of the database
+    const sql = 'DELETE FROM doctors WHERE id = $1';
+    db.query(sql, [
+        req.params.id
     ], function(err) {
         if (err) {
             console.log(err);

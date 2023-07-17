@@ -4,6 +4,8 @@ import { usSystem } from '../hoursArray';
 import { styles } from './CellsCreator.styles';
 
 const API_ENDPOINT = "/";
+// Local:
+// const API_ENDPOINT = "http://localhost:4002/";
 
 // The function takes the array with hours as the argument and creates as many rows as the length of array is
 export function CellsCreator (props) {
@@ -34,7 +36,7 @@ export function CellsCreator (props) {
 
     // Generating cells
     useEffect(() => {
-      if (!backendData) return; // Prevents an app crach when page is opened and there is no data yet
+      if (!backendData) return; // Prevents an app crash when page is opened and there is no data yet
 
       let lastMonday = new Date(props.lastMon);
       let today = new Date();
@@ -51,8 +53,8 @@ export function CellsCreator (props) {
         weekDatesStrings.push(anotherDateString);
       }
       
-
       let allRows = [];
+
       // Every hour 'receives' one row
       usSystem.forEach(time => {
           let slotsInRow = [];
@@ -63,6 +65,7 @@ export function CellsCreator (props) {
             let isSlotBooked;
             let isOutOfDate = false;
             let slotInfo;
+
             // Each row from a database is compared to a current slot. If coordinates (time and date) are same - slot gets more dynamic data and is properly styled
             let patientData=null;
 

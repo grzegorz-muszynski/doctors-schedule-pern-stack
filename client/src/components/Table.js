@@ -7,6 +7,8 @@ import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
 const API_ENDPOINT = "/";
+// Local:
+// const API_ENDPOINT = "http://localhost:4002/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');
@@ -159,27 +161,27 @@ export const Table = () => {
     }
 
     return (
-    <>
-        <img src='./images/doctor-work.jpg' id='wallpaper' alt="wallpaper" />
-        
-        <div id="navButtons">
-            <Link to='/home' id='homeBtn'>Home</Link>
-            <div className='separator'>|</div>
-            <Link id='chooseBtn' onClick={notFinished}>Change doctor</Link>
-        </div>
+        <>
+            <img src='./images/doctor-work.jpg' id='wallpaper' alt="wallpaper" />
+            
+            <div id="navButtons">
+                <Link to='/home' id='homeBtn'>Home</Link>
+                <div className='separator'>|</div>
+                <Link id='chooseBtn' onClick={notFinished}>Change doctor</Link>
+            </div>
 
-        <h2 id="title">Doctor's schedule</h2>
+            <h2 id="title">Doctor's schedule</h2>
 
-        <img className="arrows" id="leftArrow" src="./images/arrowBtn.png" alt="leftArrow" onClick={leftArrowHandler} />
-        <img className="arrows" id="rightArrow" src="./images/arrowBtn.png" alt="rightArrow" onClick={rightArrowHandler} />
+            <img className="arrows" id="leftArrow" src="./images/arrowBtn.png" alt="leftArrow" onClick={leftArrowHandler} />
+            <img className="arrows" id="rightArrow" src="./images/arrowBtn.png" alt="rightArrow" onClick={rightArrowHandler} />
 
-        <table id="schedule">
-            <FirstRowCreator lastMon={currentWeekMonday} />
-            <tbody>
-                <CellsCreator lastMon={currentWeekMonday} showForm={showForm} triggerRender={triggerRender} />
-            </tbody>
-        </table>
-        <PopUpForm coordinates={coordinates} patientData={patientData} submitting={submitting} closeForm={closeForm} />
-    </>
+            <table id="schedule">
+                <FirstRowCreator lastMon={currentWeekMonday} />
+                <tbody>
+                    <CellsCreator lastMon={currentWeekMonday} showForm={showForm} triggerRender={triggerRender} />
+                </tbody>
+            </table>
+            <PopUpForm coordinates={coordinates} patientData={patientData} submitting={submitting} closeForm={closeForm} />
+        </>
     )
 }
