@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavBar } from './NavBar';
 import './Visits.css';
 
-// const API_ENDPOINT = "/";
+const API_ENDPOINT = "/";
 // Local:
-const API_ENDPOINT = "http://localhost:4002/";
+// const API_ENDPOINT = "http://localhost:4002/";
 
 export function Visits() {
     const [patientsList, setPatientsList] = useState([]);
