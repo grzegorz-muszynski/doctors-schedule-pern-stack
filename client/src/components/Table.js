@@ -6,9 +6,9 @@ import { FirstRowCreator } from './FirstRowCreator';
 import { CellsCreator } from './CellsCreator';
 import { PopUpForm } from './PopUpForm';
 
-const API_ENDPOINT = "/";
+// const API_ENDPOINT = "/";
 // Local:
-// const API_ENDPOINT = "http://localhost:4002/";
+const API_ENDPOINT = "http://localhost:4002/";
 
 export const Table = () => {
     const [currentWeekMonday, setCurrentWeekMonday] = useState('');

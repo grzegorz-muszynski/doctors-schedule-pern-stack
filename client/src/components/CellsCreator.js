@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { usSystem } from '../hoursArray';
 import { styles } from './CellsCreator.styles';
 
-const API_ENDPOINT = "/";
+// const API_ENDPOINT = "/";
 // Local:
-// const API_ENDPOINT = "http://localhost:4002/";
+const API_ENDPOINT = "http://localhost:4002/";
 
 // The function takes the array with hours as the argument and creates as many rows as the length of array is
 export function CellsCreator (props) {
@@ -49,7 +49,7 @@ export function CellsCreator (props) {
         anotherDate.setDate(lastMonday.getDate() + i);
         weekDates.push(anotherDate);
 
-        let anotherDateString = anotherDate.toLocaleDateString();
+        let anotherDateString = anotherDate.toLocaleDateString().replaceAll("/", ".");
         weekDatesStrings.push(anotherDateString);
       }
       
@@ -69,6 +69,7 @@ export function CellsCreator (props) {
             // Each row from a database is compared to a current slot. If coordinates (time and date) are same - slot gets more dynamic data and is properly styled
             let patientData=null;
 
+            // Checking if a slot has been booked
             Array.from(backendData).forEach((bookedSlot, index) => {
               if (weekDatesStrings[n] === bookedSlot.day && time === bookedSlot.time) {
                 patientData=[bookedSlot.name, bookedSlot.surname, bookedSlot.phone_number, bookedSlot.ssn];
