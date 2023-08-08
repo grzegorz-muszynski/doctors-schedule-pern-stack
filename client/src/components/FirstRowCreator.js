@@ -14,7 +14,7 @@ export function FirstRowCreator (props) {
         for (let i = 0; i < 6; i++) {   
             let anotherDate = new Date(lastMonday); // By default, assigns current date and time. The value will be changed in the next line
             anotherDate.setDate(lastMonday.getDate() + i);
-            let anotherDateString = anotherDate.toLocaleDateString();
+            let anotherDateString = anotherDate.toLocaleDateString().replaceAll("/", ".");;
 
             weekDaysElements.push(<th key={'Day ' + i} scope="col" className="days cells">{weekDay[i]}<p className="dates">{anotherDateString}</p></th>);
         }   

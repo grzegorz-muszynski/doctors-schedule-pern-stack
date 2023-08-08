@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = new Client({
-    connectionString: process.env.DATABASE_URL, // Heroku addons
+    connectionString: process.env.DATABASE_URL,
     ssl: {
-        rejectUnauthorized: false
+    rejectUnauthorized: false
     }
 });
 db.connect();
